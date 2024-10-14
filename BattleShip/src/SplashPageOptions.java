@@ -36,7 +36,6 @@ public class SplashPageOptions {
             "1. Choose One Player Mode \n" +
             "2. Choose Two Player Mode \n" +
             "3. Display Tutorial       \n" +
-            "4. Start Game             \n" +
             "\n"); 
         }
 }
