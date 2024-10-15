@@ -1,6 +1,9 @@
 {
     "java.project.sourcePaths": [
-        "BattleShip/test",
-        "BattleShip"
+        "test"
+    ],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar"
     ]
 }
