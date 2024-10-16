@@ -78,7 +78,7 @@ public class Grid {
 
     protected Cell getCell(Coordinate coordinate){
         int r = coordinate.getRow();
-        int c = coordinate.getColumn();
+        int c = coordinate.getCol();
 
         //use to find cell at coordinate
         Cell cell = cells[r][c];
