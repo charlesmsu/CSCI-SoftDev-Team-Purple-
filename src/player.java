@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class player {
+public class Player {
     private String playerName;
 
     // constructor that optionally accepts a name
