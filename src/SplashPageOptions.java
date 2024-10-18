@@ -51,32 +51,30 @@ public class SplashPageOptions {
         while (!exit) {  // active loop until exit is true - option 4 works, path now open to add others and expand on current ones (1-3)
             displayTitle();
             displayBattleshipArt();
+            //will delay the print of the game opptions so the player can see the title
+            ConsoleHelper.delayPrint(1);
+
             displayGameOptions();
 
-            System.out.print("Please enter your option (1-4): ");
-            int choice;
-
-            // ensure valid number input from user
-            if (scanner.hasNextInt()) {
-                choice = scanner.nextInt();
-            } else {
-                System.out.println("Invalid input. Please enter a number between 1 and 4.");
-                scanner.next();  // clear invalid input
-                continue;  // restart loop
-            }
+            int choice = ConsoleHelper.getInputWithInRange("Please enter your option (1-4): ", 1, 4);
 
             switch (choice) {
                 case 1:
                     System.out.println("Edit Player Configuration...");
                     // add functionality for changing new game config here - add stuff to meeeeee UwU
+
+                    //added a ConsoleHelper Clear Screen method - ex: Consolehelper.clearScreen(number of lines you want to print to clear the screen)
                     break;
                 case 2:
                     System.out.println("Displaying Tutorial...");
                     // add tutorial display logic here - add stuff to meeeeee UwU
+                    Tutorial.displayTutorial();
                     break;
                 case 3:
                     System.out.println("Starting the game...");
                     // add game start logic here - add stuff to meeeeee UwU
+
+                    //added a ConsoleHelper Clear Screen method - ex: Consolehelper.clearScreen(number of lines you want to print to clear the screen)
                     break;
                 case 4:
                     System.out.println("Exiting the game. Goodbye!");

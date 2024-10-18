@@ -24,7 +24,7 @@ public class Player {
         System.out.print("Enter your name: ");
         String name = scanner.nextLine();
         setPlayerName(name);
-        System.out.printIn("Player name set to: " + getPlayerName());
+        System.out.println("Player name set to: " + getPlayerName());
     }
 
     // main testing method
