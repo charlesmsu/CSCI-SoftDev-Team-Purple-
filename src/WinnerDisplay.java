@@ -14,21 +14,4 @@ public class WinnerDisplay {
 
         oceanGrid.printGrid();
     }
-
-
-    // Testing main method, will need to enter actual winning/losing logic eventually
-    public static void main(String[] args) {
-        // create a Player and set name
-        Player player = new Player();
-        player.setPlayerName("John");
-
-        // Create an OceanGrid
-        OceanGrid oceanGrid = new OceanGrid();
-        
-        // Initialize the WinnerDisplay with the player and the ocean grid
-        WinnerDisplay display = new WinnerDisplay(player, oceanGrid);
-
-        // print announcement and final grid
-        display.printWinnerDisplay();
-    }
 }

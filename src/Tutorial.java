@@ -56,8 +56,4 @@ public class Tutorial {
 
         scanner.close();
     }
-
-    public static void main(String[] args) {
-        displayTutorial();
-    }
 }
