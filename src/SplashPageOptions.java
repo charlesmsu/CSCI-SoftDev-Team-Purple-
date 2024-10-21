@@ -76,7 +76,11 @@ public class SplashPageOptions {
                     break;
                 case 3:
                     System.out.println("Starting the game...");
-                    // add game start logic here - add stuff to meeeeee UwU
+                    TargetGrid grid = new TargetGrid();
+                    grid.printGrid();
+
+                    OceanGrid grid2 = new OceanGrid();
+                    grid2.printGrid();
                     break;
                 case 4:
                     System.out.println("Exiting the game. Goodbye!");
