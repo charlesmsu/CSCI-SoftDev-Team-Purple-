@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
-public class Player {
+public class player {
     private String playerName;
 
     // constructor that optionally accepts a name
-    public Player() {
+    public player() {
         this.playerName = "";
     }
 
@@ -28,7 +28,7 @@ public class Player {
     }
 
     // main testing method
-    public static void main(String[] args) {
+    public player(String[] args) {
         Player player = new Player();
         player.promptForPlayerName();
         // player name is now set and can be used
