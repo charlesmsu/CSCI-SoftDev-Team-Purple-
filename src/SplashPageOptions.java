@@ -72,7 +72,7 @@ public class SplashPageOptions {
                     break;
                 case 2:
                     System.out.println("Displaying Tutorial...");
-                    // add tutorial display logic here - add stuff to meeeeee UwU
+                    Tutorial.displayTutorial();
                     break;
                 case 3:
                     System.out.println("Starting the game...");
