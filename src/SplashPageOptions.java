@@ -75,6 +75,11 @@ public class SplashPageOptions {
                     // add game start logic here - add stuff to meeeeee UwU
 
                     //added a ConsoleHelper Clear Screen method - ex: Consolehelper.clearScreen(number of lines you want to print to clear the screen)
+                    TargetGrid grid = new TargetGrid();
+                    grid.printGrid();
+
+                    OceanGrid grid2 = new OceanGrid();
+                    grid2.printGrid();
                     break;
                 case 4:
                     System.out.println("Exiting the game. Goodbye!");
