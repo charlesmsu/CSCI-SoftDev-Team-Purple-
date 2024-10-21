@@ -1,19 +1,18 @@
 public class WinnerDisplay {
 
     private Player player;
-    private TargetGrid targetGrid;
+    private OceanGrid oceanGrid;
 
-    //constructor
-    public WinnerDisplay(Player player, TargetGrid targetGrid) {
+    public WinnerDisplay(Player player, OceanGrid oceanGrid) {
         this.player = player;
-        this.targetGrid = targetGrid;
+        this.oceanGrid = oceanGrid;
     }
 
-    // announce the winner and print their final targetgrid
+    // announce the winner and print their final oceangrid
     public void printWinnerDisplay() {
         System.out.println(player.getPlayerName() + " WINS!!!");
 
-        targetGrid.printGrid();
+        oceanGrid.printGrid();
     }
 
 
@@ -23,11 +22,11 @@ public class WinnerDisplay {
         Player player = new Player();
         player.setPlayerName("John");
 
-        // Create a TargetGrid
-        TargetGrid targetGrid = new TargetGrid();
+        // Create an OceanGrid
+        OceanGrid oceanGrid = new OceanGrid();
         
-        // Initialize the WinnerDisplay with the player and the target grid
-        WinnerDisplay display = new WinnerDisplay(player, targetGrid);
+        // Initialize the WinnerDisplay with the player and the ocean grid
+        WinnerDisplay display = new WinnerDisplay(player, oceanGrid);
 
         // print announcement and final grid
         display.printWinnerDisplay();
