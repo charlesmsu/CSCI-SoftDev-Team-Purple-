@@ -14,6 +14,10 @@ public class Cell {
     }
 
     public void setState(CellState state){
+        if(this.state == state){
+            String playerInput = ConsoleHelper.getShot();
+            
+        }
         this.state = state;
     }
 

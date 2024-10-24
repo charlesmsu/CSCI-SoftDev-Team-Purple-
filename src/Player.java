@@ -28,7 +28,7 @@ public class Player {
     }
 
     // main testing method
-    public static void main(String[] args) {
+    public Player(String[] args) {
         Player player = new Player();
         player.promptForPlayerName();
         // player name is now set and can be used
