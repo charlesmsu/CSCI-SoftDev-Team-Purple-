@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Coordinate {
     // row and column are the source of truth
     private int row;
@@ -64,5 +66,29 @@ public class Coordinate {
             throw new Exception("Invalid column for shot.");
         }
         return colNum;
+    }
+
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(row, col);
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if(this == o){
+            return true;
+        }
+        if(o == null){
+            return false;
+        }
+        if(getClass() != o.getClass()){
+            return false;
+        }
+        Coordinate coord = (Coordinate) o;
+        if(coord.getCol() == col && coord.getRow() == row){
+            return true;
+        } 
+        return false;
     }
 }
