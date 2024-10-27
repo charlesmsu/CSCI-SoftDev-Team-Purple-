@@ -36,12 +36,21 @@ public class SplashPageOptions {
             "\n" +
             "To get started, choose one of the following options:\n" +
             "\n" +
-            "1. Game Config (AI vs AI or AI vs Player) \n" +
-            "2. Display Tutorial       \n" +
-            "3. Start Game             \n" +
+            "1. Start One Player Game \n" +
+            "2. Start Two Player Game      \n" +
+            "3. Tutorial          \n" +
             "4. Exit                   \n" +
             "\n"
         );
+    }
+
+    public void startScreen(){
+        displayTitle();
+        displayBattleshipArt();
+        //will delay the print of the game opptions so the player can see the title
+        ConsoleHelper.delayPrint(2);
+
+        displayGameOptions();
     }
 
     public void promptUserInput() {

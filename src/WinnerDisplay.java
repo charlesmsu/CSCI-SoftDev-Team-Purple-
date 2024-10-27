@@ -3,7 +3,8 @@ public class WinnerDisplay {
     private Player player;
     private OceanGrid oceanGrid;
 
-    public WinnerDisplay(Player player, OceanGrid oceanGrid) {
+    public WinnerDisplay(Player player, OceanGrid oceanGrid) {// notes for cairo this will need to be the winning players. Player needs a getOceanGrid() method.
+        
         this.player = player;
         this.oceanGrid = oceanGrid;
     }
