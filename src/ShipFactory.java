@@ -12,6 +12,29 @@ protected abstract Coordinate getStartCoordinate(Ship ship) throws Exception;
 
 protected abstract Direction getStartDirection(Ship ship) throws Exception;
 
+public List<Ship> getShips(){
+    List<Ship> placedShips = new ArrayList<>();
+    for(Ship ship : ships) {
+        List<Coordinate> coords;
+        while (true) {
+            try {
+                Coordinate start = getStartCoordinate(ship);
+                Direction dir = getStartDirection(ship);
+                coords = coordsWithLengthPositionedAtInDirection(ship.getLength(), start, dir);
+                ship.setCoordinates(coords);
+                if(shipOverLaps(ship, placedShips)){
+                    continue;
+                }
+                break;
+            }catch (Exception e) {
+                continue;
+            }
+        }
+        placedShips.add(ship);
+    }
+    return ships;
+}
+
 public List<Coordinate> coordsWithLengthPositionedAtInDirection(int length, Coordinate start, Direction direction) throws Exception{
     List<Coordinate> shipsCoords = new ArrayList<>();
     for(int i = 1; i < length; i ++){
@@ -40,27 +63,6 @@ protected boolean shipOverLaps(Ship ship, List<Ship> ships){
     return false;
 }
 
-public List<Ship> getShips(){
-    List<Ship> placedShips = new ArrayList<>();
-    for(Ship ship : ships) {
-        List<Coordinate> coords;
-        while (true) {
-            try {
-                Coordinate start = getStartCoordinate(ship);
-                Direction dir = getStartDirection(ship);
-                coords = coordsWithLengthPositionedAtInDirection(ship.getLength(), start, dir);
-                ship.setCoordinates(coords);
-                if(shipOverLaps(ship, placedShips)){
-                    continue;
-                }
-                break;
-            }catch (Exception e) {
-                continue;
-            }
-        }
-        placedShips.add(ship);
-    }
-    return ships;
-}
+
     
 }
