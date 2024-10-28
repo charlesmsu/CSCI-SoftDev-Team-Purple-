@@ -40,6 +40,4 @@ public class ManualShipFactory extends ShipFactory{
             return direction;
 
         }
-
-
 }
