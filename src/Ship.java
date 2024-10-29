@@ -1,10 +1,11 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class Ship {
     private int hitCount = 0;
     private String shipName;
     private int shipLength;
-    private ArrayList<Coordinate> coordinates;
+    private List<Coordinate> coordinates;
 
     public Ship(String shipName, int shipLength) {
         this.shipName = shipName;
@@ -19,11 +20,11 @@ public class Ship {
         return shipName;
     }
 
-    public ArrayList<Coordinate> getCoordinates() {
+    public List<Coordinate> getCoordinates() {
         return coordinates;
     }
 
-    public void setCoordinates(ArrayList<Coordinate> coordinates) {
+    public void setCoordinates(List<Coordinate> coordinates) {
         this.coordinates = coordinates;
     }
 

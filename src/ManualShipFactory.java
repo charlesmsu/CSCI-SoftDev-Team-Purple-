@@ -3,14 +3,20 @@ import java.util.ArrayList;
 public class ManualShipFactory extends ShipFactory{
     
     
-    public ManualShipFactory() throws Exception {
+    public ManualShipFactory() {
        
     }
 
     @Override
-    protected Coordinate getStartCoordinate(Ship ship) throws Exception {
-            String playerResponse = ConsoleHelper.getInput("Where would like to place" + ship.getShipName() + " : ");
-            Coordinate manualCoordinate = new Coordinate(playerResponse);           
+    protected Coordinate getStartCoordinate(Ship ship) {
+        Coordinate manualCoordinate = null;
+            try {String playerResponse = ConsoleHelper.getInput("Where would like to place" + ship.getShipName() + " : ");
+                manualCoordinate = new Coordinate(playerResponse);
+                
+            } catch (Exception e) {
+                
+                System.out.println("Please try another coordinate");
+            }       
             return manualCoordinate;
         }
     

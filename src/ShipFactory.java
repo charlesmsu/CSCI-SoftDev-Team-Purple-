@@ -15,7 +15,7 @@ public abstract class ShipFactory {
     public List<Ship> getShips() {
         List<Ship> placedShips = new ArrayList<>();
         for (Ship ship : ships) {
-            List<Coordinate> coords;
+            List<Coordinate> coords = new ArrayList<>();
             while (true) {
                 try {
                     Coordinate start = getStartCoordinate(ship);
@@ -32,7 +32,7 @@ public abstract class ShipFactory {
             }
             placedShips.add(ship);
         }
-        return ships;
+        return ships;//this is returning the list w
     }
 
     public List<Coordinate> coordsWithLengthPositionedAtInDirection(int length, Coordinate start, Direction direction)
