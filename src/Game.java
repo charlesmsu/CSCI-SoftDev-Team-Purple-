@@ -1,3 +1,5 @@
+import java.util.List;
+import java.util.ArrayList;
 //Call Game class
 //make Game class
 //call for splash page
@@ -8,6 +10,7 @@
 //prompt(new game or exit app) when game is over
 //
 public class Game {
+    private List<Player> players = new ArrayList<>();
     boolean exit;
     public Game(){
         this.exit = false;
@@ -69,22 +72,19 @@ public class Game {
                 case 2:
                     ConsoleHelper.clearScreen(30);
                     System.out.println("Starting Two Player Game");
-                                        //start by getting the players names request player ones name first
-                    //build the players grids then start 
-                    // ask how player one would like set ships on the screen manual or randomly
-                        //add ships to players grid
-                        //display ship grid wait for player input to continue
-
+                    //make players
+                    addPlayer();
+                    addPlayer();
+                    buildPlayers();
+                    
+                    //display ship grid wait for player input to continue
+                    ConsoleHelper.getInput("Press Enter Too Continue");
                     //Clear Screen method
-                    //repeat the steps for player 2 below
-                    //start by getting the players names request player 2 name
-                    //build the players grids then start 
-                    // ask how player one would like set ships on the screen manual or randomly
-                        //add ships to players grid
-                        //display ship grid wait for player input to continue
-                    //Clear Screen method
-
+                    ConsoleHelper.clearScreen(20);
+                    buildPlayers();
+                    
                     //will need to enter loop for the players to take shots on each others boards and update the grids
+                    
                         //if statement to show when a ship has sunk
                             //if true asscii art by the choosen one daniel-sun
                         //if no ships left then we will display the WinnerDisplay
@@ -115,7 +115,28 @@ public class Game {
                     break;
             }
         }
+        
 
     }
+    public void addPlayer(){
+        this.players.add(new Player());
+    }
+
+    public void buildPlayers(){
+        for(Player player : players){
+            ConsoleHelper.getInput("Create new player");
+            player.promptForPlayerName();
+            player.getPlayerShips(player);
+            // ask how player one would like set ships on the screen manual or randomly
+            //add ships to players grid
+            player.getOceanGrid().printGrid();
+            player.getTargetGrid().printGrid();
+            //display ship grid wait for player input to continue
+            ConsoleHelper.getInput("Press Enter Too Continue");
+            //Clear Screen method
+            ConsoleHelper.clearScreen(20);
+        }
+    }
+    
 
 }

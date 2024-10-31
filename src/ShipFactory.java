@@ -2,7 +2,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 public abstract class ShipFactory {
-    private List<Ship> ships = new ArrayList<Ship>();
+    protected List<Ship> ships = new ArrayList<Ship>();
 
     public ShipFactory() {
         Constants.shipSpecifications.forEach((k, v) -> ships.add(new Ship(k, v)));
@@ -20,24 +20,28 @@ public abstract class ShipFactory {
                 try {
                     Coordinate start = getStartCoordinate(ship);
                     Direction dir = getStartDirection(ship);
+                    System.out.println(dir);
                     coords = coordsWithLengthPositionedAtInDirection(ship.getLength(), start, dir);
                     ship.setCoordinates(coords);
-                    if (shipOverLaps(ship, placedShips)) {
-                        continue;
+                    if (shipOverLaps(ship, placedShips) == true) {
+                        break;
                     }
-                    break;
+
                 } catch (Exception e) {
+                    System.out.println("A ship is already here");
                     continue;
                 }
+                break;
             }
             placedShips.add(ship);
         }
-        return ships;//this is returning the list w
+        return ships;// this is returning the list w
     }
 
     public List<Coordinate> coordsWithLengthPositionedAtInDirection(int length, Coordinate start, Direction direction)
             throws Exception {
         List<Coordinate> shipsCoords = new ArrayList<>();
+        shipsCoords.add(start);
         for (int i = 1; i < length; i++) {
             int nextRow = shipsCoords.get(i - 1).getRow();
             int nextColumn = shipsCoords.get(i - 1).getCol();
@@ -56,8 +60,11 @@ public abstract class ShipFactory {
         for (Ship existingShip : ships) {
             List<Coordinate> existingShipCoords = existingShip.getCoordinates();
             for (Coordinate c : ship.getCoordinates()) {
-                if (existingShipCoords.contains(c)) {
-                    return true;
+                for (Coordinate ec : existingShipCoords) {
+                    if (ec.equals(c)) {
+                        System.out.println("there is no ship here");
+                        return true;
+                    }
                 }
             }
         }

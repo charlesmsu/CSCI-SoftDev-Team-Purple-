@@ -1,22 +1,17 @@
-import java.util.ArrayList;
-
-public class ManualShipFactory extends ShipFactory{
-    
-    
-    public ManualShipFactory() {
-       
-    }
+public class ManualShipFactory extends ShipFactory{  
 
     @Override
     protected Coordinate getStartCoordinate(Ship ship) {
         Coordinate manualCoordinate = null;
-            try {String playerResponse = ConsoleHelper.getInput("Where would like to place" + ship.getShipName() + " : ");
+        while(true){
+            try {String playerResponse = ConsoleHelper.getInput("Where would you like to place the " + ship.getShipName() + " : ");
                 manualCoordinate = new Coordinate(playerResponse);
-                
+                break;
             } catch (Exception e) {
                 
                 System.out.println("Please try another coordinate");
             }       
+        }
             return manualCoordinate;
         }
     
@@ -34,13 +29,13 @@ public class ManualShipFactory extends ShipFactory{
                 direction = Direction.NORTH;
                 break;
             case 2:
-                direction = Direction.SOUTH;
+                direction = Direction.EAST;
                 break;
             case 3:
-                direction =  Direction.EAST;
+                direction =  Direction.SOUTH;
                 break;
             case 4:
-                direction =  Direction.SOUTH;
+                direction =  Direction.WEST;
                 break;
             }
             return direction;

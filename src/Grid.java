@@ -109,6 +109,14 @@ public class Grid {
 
     }
 
+    protected void addShips(ShipFactory factory){
+        for (Ship ship : factory.getShips()) {
+            for(Coordinate cord: ship.getCoordinates()){
+                setCellState(cord, CellState.OCCUPIED);
+            }
+       }
+    }
+
     
 
 }
