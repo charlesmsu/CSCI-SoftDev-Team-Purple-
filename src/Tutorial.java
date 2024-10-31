@@ -1,7 +1,9 @@
+// This class starts making the main menu input act like a goober when I close the scanner so I just left it open and it seems to work so far????
+
 import java.util.Scanner;
 
 public class Tutorial {
-    
+
     public static void printOnePlayerRules() {
         System.out.println("One Player Mode (vs. Computer) Rules:");
         System.out.println("- The player places their ships on the grid.");
@@ -31,29 +33,24 @@ public class Tutorial {
         printTwoPlayerRules();
         System.out.println("______________________________________________________");
 
-        //Prompt for 1 to return or 'x' to exit
+        // Prompt for 1 to return or 'x' to exit
         System.out.println("\nPress 1 to return to main menu\nPress 'x' to exit game");
 
         // Wait for user input
         while (true) {
             String input = scanner.nextLine();
-            
-            // Check if user pressed 1 to return or 'x' to exit
+
             if (input.equals("1")) {
-                // Reroute to SplashPageOptions
-                SplashPageOptions splashPage = new SplashPageOptions();
-                splashPage.promptUserInput();
+                System.out.println("Returning to the main menu...");
                 break;
             } else if (input.equalsIgnoreCase("x")) {
                 System.out.println("Exiting the game. Goodbye!");
-                System.exit(0);  // Exit the program
+                System.exit(0);  // Exit
                 break;
             } else {
-                // Invalid input, ask again
+                // Invalid input
                 System.out.println("Invalid input. Please press 1 to return to the main menu or 'x' to exit game.");
             }
         }
-
-        scanner.close();
     }
 }
