@@ -31,6 +31,27 @@ public class SplashPageOptions {
     "\n");
     }
 
+    public void displayShipSunk() {
+        System.out.print(
+    "                                      ___                                   \n"+
+    "                              __,-~~/~    `---.                             \n"+
+    "                            _/_,---(      ,    )                            \n"+
+    "                        __ /        <    /   )  \\___                       \n"+
+    "         - ------===;;;'====------------------===;;;===----- -  -           \n"+
+    "                           \\/  ~\"~\"~\"~\"~\"~\\~\"~)~\"/                 \n"+
+    "                           (_ (   \\  (     >    \\)                        \n"+
+    "                            \\_( _ <         >_>'                           \n"+
+    "                               ~ `-i' ::>|--\"                              \n"+
+    "                                   I;|.|.|                                  \n"+       
+    "     <--------------------'   .  . I;|.|.|.  .  .  .   '--------------/     \n" +            
+    "       \\                         <|i::|i|`.                          /     \n" +            
+    "        \\_______________________(` ^'\\\"`-' \\\")__________________/      \n" +            
+    "    wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww   \n" +            
+    "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww \n" +            
+    "    wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww     \n" +            
+    "\n");
+    }
+
     public void displayGameOptions() {
         System.out.println(
             "\n" +
