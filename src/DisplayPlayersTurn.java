@@ -1,0 +1,13 @@
+public class DisplayPlayersTurn {
+
+    public static void showPlayerTurn(Player player) {
+        ConsoleHelper.clearScreen(30);
+        String playerName = player.getPlayerName();
+        ConsoleHelper.delayPrint(1);
+
+        System.out.println("======================================");
+        System.out.println("          " + playerName + "'s Turn");
+        System.out.println("======================================");
+        ConsoleHelper.delayPrint(1);
+    }
+}
