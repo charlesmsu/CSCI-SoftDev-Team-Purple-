@@ -33,7 +33,7 @@ public class Game {
             switch (choice) {
                 case 1:
                     ConsoleHelper.clearScreen(30);
-                    System.out.println("Starting One Player Game");
+                    System.out.println("Starting One Player Game...\n");
                     // select Computer level Difficulty
                     // start by getting the players names request player ones name first
                     // build the players grids then start
@@ -75,7 +75,7 @@ public class Game {
                     break;
                 case 2:
                     ConsoleHelper.clearScreen(30);
-                    System.out.println("Starting Two Player Game");
+                    System.out.println("Starting Two Player Game...\n");
                     // make players
                     addPlayer();
                     addPlayer();
@@ -132,7 +132,7 @@ public class Game {
             player.getOceanGrid().printGrid();
             player.getTargetGrid().printGrid();
             // display ship grid wait for player input to continue
-            ConsoleHelper.getInput("Press Enter Too Continue");
+            ConsoleHelper.getInput("Press Enter To Continue");
             // Clear Screen method
             ConsoleHelper.clearScreen(20);
         }
@@ -164,7 +164,7 @@ public class Game {
             System.out.println("It is " + players.get(1).getPlayerName() + " turn");
             players.get(1).getTargetGrid().printGrid();
             players.get(1).getOceanGrid().printGrid();
-            ConsoleHelper.getInput("press enter to continue");
+            ConsoleHelper.getInput("Press enter to continue");
             try {
                 cord = new Coordinate(ConsoleHelper.getShot());
             } catch (Exception e) {
@@ -175,7 +175,7 @@ public class Game {
             players.get(1).updateTargetGrid(cord, state);
             players.get(1).getOceanGrid().printGrid();
             players.get(1).getTargetGrid().printGrid();
-            ConsoleHelper.getInput("press enter to Continue");
+            ConsoleHelper.getInput("Press enter to Continue");
             ConsoleHelper.clearScreen(15);
 
             if (players.get(0).checkShipCount() == true) {
