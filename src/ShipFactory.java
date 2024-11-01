@@ -24,7 +24,7 @@ public abstract class ShipFactory {
                     coords = coordsWithLengthPositionedAtInDirection(ship.getLength(), start, dir);
                     ship.setCoordinates(coords);
                     if (shipOverLaps(ship, placedShips) == true) {
-                        break;
+                        continue;
                     }
 
                 } catch (Exception e) {
@@ -60,11 +60,8 @@ public abstract class ShipFactory {
         for (Ship existingShip : ships) {
             List<Coordinate> existingShipCoords = existingShip.getCoordinates();
             for (Coordinate c : ship.getCoordinates()) {
-                for (Coordinate ec : existingShipCoords) {
-                    if (ec.equals(c)) {
-                        System.out.println("there is no ship here");
-                        return true;
-                    }
+                if(existingShipCoords.contains(c)){
+                    return true;
                 }
             }
         }
