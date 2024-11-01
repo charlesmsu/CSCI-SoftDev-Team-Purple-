@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0e688c1845abb40005700d6804634c7aa7041f63
 import java.util.List;
 
 public class Ship {

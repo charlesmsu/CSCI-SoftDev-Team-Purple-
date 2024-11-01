@@ -19,14 +19,35 @@ public class SplashPageOptions {
     "                                                                            \n" + 
     "                                       # #  ( )                             \n" +
     "                                    ___#_#___|__                            \n" +
-    "                                _  |____________|  _                        \n"+            
-    "                         _=====| | |            | | |==== _                 \n"+            
+    "                                _  |____________|  _                        \n" +            
+    "                         _=====| | |            | | |==== _                 \n" +            
     "                   =====| |.---------------------------. | |====            \n" +            
     "     <--------------------'   .  .  .  .  .  .  .  .   '--------------/     \n" +            
     "       \\                                                             /     \n" +            
     "        \\_____________________________BATTLESHIP____________________/      \n" +            
     "    wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww   \n" +            
     "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwWWWW\n" +            
+    "    wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww     \n" +            
+    "\n");
+    }
+
+    public void displayShipSunk() {
+        System.out.print(
+    "                                      ___                                   \n" +
+    "                              __,-~~/~    `---.                             \n" +
+    "                            _/_,---(      ,    )                            \n" +
+    "                        __ /        <    /   )  \\___                       \n" +
+    "         - ------===;;;'====------------------===;;;===----- -  -           \n" +
+    "                           \\/  ~\"~\"~\"~\"~\"~\\~\"~)~\"/                 \n" +
+    "                           (_ (   \\  (     >    \\)                        \n" +
+    "                            \\_( _ <         >_>'                           \n" +
+    "                               ~ `-i' ::>|--\"                              \n" +
+    "                                   I;|.|.|                                  \n" +       
+    "     <--------------------'   .  . I;|.|.|.  .  .  .   '--------------/     \n" +            
+    "       \\                         <|i::|i|`.                          /     \n" +            
+    "        \\_______________________(` ^'\\\"`-' \\\")__________________/      \n" +            
+    "    wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww   \n" +            
+    "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww \n" +            
     "    wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww     \n" +            
     "\n");
     }
