@@ -124,7 +124,7 @@ public class Game {
 
     public void buildPlayers(){
         for(Player player : players){
-            ConsoleHelper.getInput("Create new player");
+            ConsoleHelper.getInput("Create new player:");
             player.promptForPlayerName();
             player.getPlayerShips(player);
             // ask how player one would like set ships on the screen manual or randomly

@@ -15,7 +15,7 @@ public class ShipFactoryTest {
 
     @Before
     public void createFactory() throws Exception {
-        factory = new ShipFactory(); // Assuming this is how you initialize the factory
+        ShipFactory factory ; // Assuming this is how you initialize the factory
         ship1 = new Ship("BATTLESHIP",4);
         ship2 = new Ship("CARRIER", 5);
         ship3 = new Ship("CRUISER",3);
@@ -31,7 +31,7 @@ public class ShipFactoryTest {
     @Test
     public void shipSizeCheck() {
 
-        assertEquals(5, factory.getShipListLength());
+        assertEquals(5, factory.getShips.size());
     }
 
     @Test
@@ -156,7 +156,7 @@ public class ShipFactoryTest {
 
 
         // Assert that the ships are overlapping
-        assertFalse(factory.shipOverlapsExistingShip(ship1, new ArrayList<>(List.of(ship1))));
+        assertFalse(factory.shipOverLaps(ship1, new ArrayList<>(List.of(ship1))));
     }
 
     @Test
