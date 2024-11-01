@@ -1,4 +1,4 @@
-// This class starts making the main menu input act like a goober when I close the scanner so I just left it open and it seems to work so far????
+// This class starts making the main menu input act like a goober when I close the scanner so I just left it open and it seems to work so far???? Might need to switch scanner to console helper getinputwithinrange method.
 
 import java.util.Scanner;
 
