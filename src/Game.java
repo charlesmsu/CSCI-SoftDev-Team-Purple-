@@ -138,5 +138,35 @@ public class Game {
         }
     }
     
+    // some two player game functionality i'm putting in as part of DisplayPlayersTurn(), can be used, doesn't have to, just figured it would be useful to have on standby if the time came
+    
+    // public void startTwoPlayerGame() {
+    //    Player player1 = new Player();
+    //    Player player2 = new Player();
+    //    player1.promptForPlayerName();
+    //    player2.promptForPlayerName();
 
-}
+    //    TargetGrid player1TargetGrid = new TargetGrid();
+    //    OceanGrid player1OceanGrid = new OceanGrid();
+    //    TargetGrid player2TargetGrid = new TargetGrid();
+    //    OceanGrid player2OceanGrid = new OceanGrid();
+
+    //    SwitchPlayers switchPlayers = new SwitchPlayers(player1, player2, player1TargetGrid, player1OceanGrid, 
+    //                                                    player2TargetGrid, player2OceanGrid);
+
+    //    while (!gameOver) {
+    //        ShotResult result = switchPlayers.playTurn();
+    //        gameOver = checkForWinner(switchPlayers);
+    //    }
+
+    //    System.out.println("Game over! Thanks for playing.");
+    //}
+
+    // private boolean checkForWinner(SwitchPlayers switchPlayers) {
+    //    OceanGrid opponentOceanGrid = switchPlayers.getOpponentOceanGrid();
+    //    if (opponentOceanGrid.allShipsSunk()) {
+    //        System.out.println(switchPlayers.getCurrentPlayer().getPlayerName() + " wins!");
+    //        return true;
+    //    }
+    //    return false;
+    }
