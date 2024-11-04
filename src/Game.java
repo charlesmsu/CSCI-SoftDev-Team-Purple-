@@ -142,7 +142,7 @@ public class Game {
     public void playCycle() {
         while (true) {
             CellState state;
-            ConsoleHelper.getInput("It is " + players.get(0).getPlayerName() + " turn \n press Enter to continue");
+            ConsoleHelper.getInput("It is " + players.get(0).getPlayerName() + "'s turn. \nPress Enter To Continue:");
             players.get(0).getTargetGrid().printGrid();
             players.get(0).getOceanGrid().printGrid();
             while (true) {
@@ -167,11 +167,11 @@ public class Game {
                 WinnerDisplay.printWinnerDisplay(players.get(0).getPlayerName(), players.get(0).getOceanGrid());
                 break;
             }
-            ConsoleHelper.getInput("Your Grids have been updated \n Press enter to Continue to finish your turn");
+            ConsoleHelper.getInput("Your Grids have been updated. \nPress Enter To Finish your turn:");
 
             ConsoleHelper.clearScreen(15);
 
-            ConsoleHelper.getInput("It is " + players.get(1).getPlayerName() + " turn \n press Enter to continue");
+            ConsoleHelper.getInput("It is " + players.get(1).getPlayerName() + "'s turn. \nPress Enter To Continue:");
             players.get(1).getTargetGrid().printGrid();
             players.get(1).getOceanGrid().printGrid();
             while (true) {
@@ -191,7 +191,7 @@ public class Game {
 
             players.get(1).getTargetGrid().printGrid();
             players.get(1).getOceanGrid().printGrid();
-            ConsoleHelper.getInput("Your Grids have been updated \n Press enter to Continue to finish your turn");
+            ConsoleHelper.getInput("Your Grids have been updated \nPress Enter to Finish your turn:");
             ConsoleHelper.clearScreen(15);
 
             if (players.get(0).checkShipCount() == true) {
