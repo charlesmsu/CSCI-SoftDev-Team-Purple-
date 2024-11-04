@@ -11,7 +11,7 @@ import java.util.ArrayList;
 //prompt(new game or exit app) when game is over
 //
 public class Game {
-    public List<Player> players= new ArrayList<>();
+    public List<Player> players = new ArrayList<>();
     public Coordinate cord;
     boolean exit;
 
@@ -129,8 +129,9 @@ public class Game {
             player.getPlayerShips(player);
             // ask how player one would like set ships on the screen manual or randomly
             // add ships to players grid
-            player.getOceanGrid().printGrid();
+
             player.getTargetGrid().printGrid();
+            player.getOceanGrid().printGrid();
             // display ship grid wait for player input to continue
             ConsoleHelper.getInput("Press Enter To Continue");
             // Clear Screen method
@@ -141,78 +142,98 @@ public class Game {
     public void playCycle() {
         while (true) {
             CellState state;
-            System.out.println("It is " + players.get(0).getPlayerName() + " turn");
+            ConsoleHelper.getInput("It is " + players.get(0).getPlayerName() + "'s turn. \nPress Enter To Continue:");
             players.get(0).getTargetGrid().printGrid();
             players.get(0).getOceanGrid().printGrid();
-            try {
-                cord = new Coordinate(ConsoleHelper.getShot());
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+            while (true) {
+                try {
+                    cord = new Coordinate(ConsoleHelper.getShot());
+                    state = players.get(1).checkShotOceanGrid(cord);
+                    if (state == CellState.OCCUPIED) {
+                        System.out.println("Try again");
+                        continue;
+                    }
+                    players.get(0).updateTargetGrid(cord, state);
+                    break;
+                } catch (Exception e) {
+                    ConsoleHelper.getInput("Please enter a valid coordinate (ex: b4)");
+                }
             }
-            state = players.get(1).checkShotOceanGrid(cord);
-            players.get(0).updateTargetGrid(cord, state);
-            
+
+
             players.get(0).getTargetGrid().printGrid();
             players.get(0).getOceanGrid().printGrid();
-            if (players.get(0).checkShipCount() == true) {
+            if (players.get(1).checkShipCount() == true) {
+                WinnerDisplay.printWinnerDisplay(players.get(0).getPlayerName(), players.get(0).getOceanGrid());
                 break;
             }
+            ConsoleHelper.getInput("Your Grids have been updated. \nPress Enter To Finish your turn:");
 
             ConsoleHelper.clearScreen(15);
 
-            System.out.println("It is " + players.get(1).getPlayerName() + " turn");
+            ConsoleHelper.getInput("It is " + players.get(1).getPlayerName() + "'s turn. \nPress Enter To Continue:");
             players.get(1).getTargetGrid().printGrid();
             players.get(1).getOceanGrid().printGrid();
-            ConsoleHelper.getInput("Press enter to continue");
-            try {
-                cord = new Coordinate(ConsoleHelper.getShot());
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+            while (true) {
+                try {
+                    cord = new Coordinate(ConsoleHelper.getShot());
+                    state = players.get(0).checkShotOceanGrid(cord);
+                    if (state == CellState.OCCUPIED) {
+                        System.out.println("Try again");
+                        continue;
+                    }
+                    players.get(1).updateTargetGrid(cord, state);
+                    break;
+                } catch (Exception e) {
+                    ConsoleHelper.getInput("Please enter a valid coordinate (ex: b4)");
+                }
             }
-            state = players.get(0).checkShotOceanGrid(cord);
-            players.get(1).updateTargetGrid(cord, state);
-            players.get(1).getOceanGrid().printGrid();
+
             players.get(1).getTargetGrid().printGrid();
-            ConsoleHelper.getInput("Press enter to Continue");
+            players.get(1).getOceanGrid().printGrid();
+            ConsoleHelper.getInput("Your Grids have been updated \nPress Enter to Finish your turn:");
             ConsoleHelper.clearScreen(15);
 
             if (players.get(0).checkShipCount() == true) {
+                WinnerDisplay.printWinnerDisplay(players.get(1).getPlayerName(), players.get(1).getOceanGrid());
                 break;
             }
 
         }
-    // some two player game functionality i'm putting in as part of DisplayPlayersTurn(), can be used, doesn't have to, just figured it would be useful to have on standby if the time came
-    
-    // public void startTwoPlayerGame() {
-    //    Player player1 = new Player();
-    //    Player player2 = new Player();
-    //    player1.promptForPlayerName();
-    //    player2.promptForPlayerName();
+        // some two player game functionality i'm putting in as part of
+        // DisplayPlayersTurn(), can be used, doesn't have to, just figured it would be
+        // useful to have on standby if the time came
 
-    //    TargetGrid player1TargetGrid = new TargetGrid();
-    //    OceanGrid player1OceanGrid = new OceanGrid();
-    //    TargetGrid player2TargetGrid = new TargetGrid();
-    //    OceanGrid player2OceanGrid = new OceanGrid();
+        // public void startTwoPlayerGame() {
+        // Player player1 = new Player();
+        // Player player2 = new Player();
+        // player1.promptForPlayerName();
+        // player2.promptForPlayerName();
 
-    //    SwitchPlayers switchPlayers = new SwitchPlayers(player1, player2, player1TargetGrid, player1OceanGrid, 
-    //                                                    player2TargetGrid, player2OceanGrid);
+        // TargetGrid player1TargetGrid = new TargetGrid();
+        // OceanGrid player1OceanGrid = new OceanGrid();
+        // TargetGrid player2TargetGrid = new TargetGrid();
+        // OceanGrid player2OceanGrid = new OceanGrid();
 
-    //    while (!gameOver) {
-    //        ShotResult result = switchPlayers.playTurn();
-    //        gameOver = checkForWinner(switchPlayers);
-    //    }
+        // SwitchPlayers switchPlayers = new SwitchPlayers(player1, player2,
+        // player1TargetGrid, player1OceanGrid,
+        // player2TargetGrid, player2OceanGrid);
 
-    //    System.out.println("Game over! Thanks for playing.");
-    //}
+        // while (!gameOver) {
+        // ShotResult result = switchPlayers.playTurn();
+        // gameOver = checkForWinner(switchPlayers);
+        // }
 
-    // private boolean checkForWinner(SwitchPlayers switchPlayers) {
-    //    OceanGrid opponentOceanGrid = switchPlayers.getOpponentOceanGrid();
-    //    if (opponentOceanGrid.allShipsSunk()) {
-    //        System.out.println(switchPlayers.getCurrentPlayer().getPlayerName() + " wins!");
-    //        return true;
-    //    }
-    //    return false;
-        }
+        // System.out.println("Game over! Thanks for playing.");
+        // }
+
+        // private boolean checkForWinner(SwitchPlayers switchPlayers) {
+        // OceanGrid opponentOceanGrid = switchPlayers.getOpponentOceanGrid();
+        // if (opponentOceanGrid.allShipsSunk()) {
+        // System.out.println(switchPlayers.getCurrentPlayer().getPlayerName() + "
+        // wins!");
+        // return true;
+        // }
+        // return false;
     }
+}

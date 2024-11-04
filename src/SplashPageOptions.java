@@ -31,7 +31,7 @@ public class SplashPageOptions {
     "\n");
     }
 
-    public void displayShipSunk() {
+    public static void displayShipSunk() {
         System.out.print(
     "                                      ___                                   \n" +
     "                              __,-~~/~    `---.                             \n" +

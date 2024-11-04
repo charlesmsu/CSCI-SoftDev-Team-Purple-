@@ -42,7 +42,7 @@ public class ConsoleHelper {
 
     public static String getShot() {
         String inStr = "";
-        System.out.println("\n\n Where would you like to shoot? : ");
+        System.out.println("\n\nWhere would you like to shoot?: ");
         try {
             inStr = reader.readLine();
         } catch (final IOException e) {
