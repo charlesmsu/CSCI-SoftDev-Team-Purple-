@@ -22,7 +22,22 @@ public class Grid {
     }
 
 
+    public void updateGridCells(int row) {
+        for(int column = 0; column < 10; column++){
+            if(cells[row][column].getState() == CellState.EMPTY){
+                System.out.print("   |");
+            }
+            
+        }
+    }
+
+    public void printGridName() {
+        System.out.println("");
+    }
+
     public void printGrid() {
+        printGridName();
+
         String rowName = "";
         printDivider();
         printHeader();
@@ -63,12 +78,7 @@ public class Grid {
 
             }
             System.out.print(rowName);
-            for(int column = 0; column < 10; column++){
-                if(cells[row][column].getState() == CellState.EMPTY){
-                    System.out.print("   |");
-                }
-                
-            }
+            updateGridCells(row);
             System.out.println();
             printDivider();
         }
