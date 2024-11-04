@@ -49,7 +49,7 @@ public class Player {
 
     }
     public void getPlayerShips(Player player){
-        int playerString = ConsoleHelper.getInputWithInRange("Would you like to set your ships manually or randomly",1,2);
+        int playerString = ConsoleHelper.getInputWithInRange("\nPress 1 to place your ships manually\nPress 2 to place your ships randomly: ",1,2);
         switch (playerString) {
             case 1:
                 this.factory = new ManualShipFactory();
