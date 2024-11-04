@@ -129,8 +129,9 @@ public class Game {
             player.getPlayerShips(player);
             // ask how player one would like set ships on the screen manual or randomly
             // add ships to players grid
-            player.getOceanGrid().printGrid();
+            
             player.getTargetGrid().printGrid();
+            player.getOceanGrid().printGrid();
             // display ship grid wait for player input to continue
             ConsoleHelper.getInput("Press Enter Too Continue");
             // Clear Screen method
