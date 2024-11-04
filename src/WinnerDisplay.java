@@ -9,13 +9,16 @@ public class WinnerDisplay {
 
     }
 
-    // announce the winner and print their ocean grid
+    // announce the winner and print their winning ocean grid
     public static void printWinnerDisplay(String name, Grid oceanGrid) {
         System.out.println("**************************************************");
         System.out.println("***** " + name.toUpperCase() + " WINS!!! *****");
         System.out.println("**************************************************");
         System.out.println();
         
+        String formattedName = capitalizeFirstLetter(name);
+        System.out.println(formattedName + "'s winning");
+
         oceanGrid.printGrid();
         System.out.println();
 
@@ -42,4 +45,12 @@ public class WinnerDisplay {
             }
         }
     }
+
+    public static String capitalizeFirstLetter(String input) {
+        if (input == null || input.isEmpty()) {
+            return input;
+        }
+        return input.substring(0, 1).toUpperCase() + input.substring(1).toLowerCase();
+    }
+    
 }
