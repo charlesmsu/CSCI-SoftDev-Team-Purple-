@@ -169,7 +169,7 @@ public class Game {
             }
             ConsoleHelper.getInput("Your Grids have been updated. \nPress Enter To Finish your turn:");
 
-            ConsoleHelper.clearScreen(15);
+            ConsoleHelper.clearScreen(50);
 
             ConsoleHelper.getInput("It is " + players.get(1).getPlayerName() + "'s turn. \nPress Enter To Continue:");
             players.get(1).getTargetGrid().printGrid();
@@ -192,7 +192,7 @@ public class Game {
             players.get(1).getTargetGrid().printGrid();
             players.get(1).getOceanGrid().printGrid();
             ConsoleHelper.getInput("Your Grids have been updated \nPress Enter to Finish your turn:");
-            ConsoleHelper.clearScreen(15);
+            ConsoleHelper.clearScreen(50);
 
             if (players.get(0).checkShipCount() == true) {
                 WinnerDisplay.printWinnerDisplay(players.get(1).getPlayerName(), players.get(1).getOceanGrid());
