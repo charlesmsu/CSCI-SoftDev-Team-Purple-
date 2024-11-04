@@ -14,7 +14,7 @@ public class ShipFactoryTests {
 
     @Test (expected = Exception.class)
     public void testOffToTop() throws Exception {
-        Coordinate start = new Coordinate("C2");
+        Coordinate start = new Coordinate("d2");
         List<Coordinate> result = factory.coordsWithLengthPositionedAtInDirection(5, start, Direction.NORTH);
     }
 
@@ -36,39 +36,39 @@ public class ShipFactoryTests {
        List<Coordinate> result = factory.coordsWithLengthPositionedAtInDirection(5, start, Direction.WEST);  
     }
 
-  //   @Test
-  //   public void testGenerateThreeCoordinatesToWest()throws Exception {
-  //       Coordinate teststart = new Coordinate(2,2);
-  //       List<Coordinate> result = factory.coordsWithLengthPositionedAtInDirection(3, teststart, Direction.WEST);
+    @Test
+    public void testGenerateThreeCoordinatesToWest()throws Exception {
+        Coordinate teststart = new Coordinate(2,2);
+        List<Coordinate> result = factory.coordsWithLengthPositionedAtInDirection(3, teststart, Direction.WEST);
 
-  //       assertEquals(3, result.size());
-  //       assertTrue(result.contains(new Coordinate(2,2)));
-  //       assertTrue(result.contains(new Coordinate(2,1)));
-  //       assertTrue(result.contains(new Coordinate(2,0)));
-  //   }
+        assertEquals(3, result.size());
+        assertTrue(result.contains(new Coordinate(2,2)));
+        assertTrue(result.contains(new Coordinate(2,1)));
+        assertTrue(result.contains(new Coordinate(2,0)));
+    }
 
-  //   @Test
-  //   public void testGenerateTwoCoordinatesToNorth()throws Exception {
-  //       Coordinate teststart = new Coordinate(2,1);
-  //       List<Coordinate> result = factory.coordsWithLengthPositionedAtInDirection(2, teststart, Direction.NORTH);
+    @Test
+    public void testGenerateTwoCoordinatesToNorth()throws Exception {
+        Coordinate teststart = new Coordinate(2,1);
+        List<Coordinate> result = factory.coordsWithLengthPositionedAtInDirection(2, teststart, Direction.NORTH);
 
-  //       assertEquals(2, result.size());
-  //       assertTrue(result.contains(new Coordinate(2,1)));
-  //       assertTrue(result.contains(new Coordinate(1,1)));
-  //   }
+        assertEquals(2, result.size());
+        assertTrue(result.contains(new Coordinate(2,1)));
+        assertTrue(result.contains(new Coordinate(1,1)));
+    }
 
-  //   @Test
-  //   public void testGenerateFiveCoordinatesToEast()throws Exception {
-  //       Coordinate teststart = new Coordinate(2,1);
-  //       List<Coordinate> result = factory.coordsWithLengthPositionedAtInDirection(5, teststart, Direction.EAST);
+    @Test
+    public void testGenerateFiveCoordinatesToEast()throws Exception {
+        Coordinate teststart = new Coordinate(2,1);
+        List<Coordinate> result = factory.coordsWithLengthPositionedAtInDirection(5, teststart, Direction.EAST);
 
-  //       assertEquals(5, result.size());
-  //       assertTrue(result.contains(new Coordinate(2,1)));
-  //       assertTrue(result.contains(new Coordinate(2,2)));
-  //       assertTrue(result.contains(new Coordinate(2,3)));
-  //       assertTrue(result.contains(new Coordinate(2,4)));
-  //       assertTrue(result.contains(new Coordinate(2,5)));
-  //   }
+        assertEquals(5, result.size());
+        assertTrue(result.contains(new Coordinate(2,1)));
+        assertTrue(result.contains(new Coordinate(2,2)));
+        assertTrue(result.contains(new Coordinate(2,3)));
+        assertTrue(result.contains(new Coordinate(2,4)));
+        assertTrue(result.contains(new Coordinate(2,5)));
+    }
 
     @Test
     public void testDetectOverlap()throws Exception {
@@ -106,54 +106,54 @@ public class ShipFactoryTests {
         assertFalse(factory.shipOverLaps(one, List.of(two)));
     }
 
-  //   @Test
-  //   public void testGenerateFourCoordinatesToSouth()throws Exception {
-  //       Coordinate teststart = new Coordinate(2,1);
-  //       List<Coordinate> result = factory.coordsWithLengthPositionedAtInDirection(4, teststart, Direction.SOUTH);
-  //       assertEquals(4, result.size());
-  //       assertTrue(result.contains(new Coordinate(2,1)));
-  //       assertTrue(result.contains(new Coordinate(3,1)));
-  //       assertTrue(result.contains(new Coordinate(4,1)));
-  //       assertTrue(result.contains(new Coordinate(5,1)));
-  //   }
+    @Test
+    public void testGenerateFourCoordinatesToSouth()throws Exception {
+        Coordinate teststart = new Coordinate(2,1);
+        List<Coordinate> result = factory.coordsWithLengthPositionedAtInDirection(4, teststart, Direction.SOUTH);
+        assertEquals(4, result.size());
+        assertTrue(result.contains(new Coordinate(2,1)));
+        assertTrue(result.contains(new Coordinate(3,1)));
+        assertTrue(result.contains(new Coordinate(4,1)));
+        assertTrue(result.contains(new Coordinate(5,1)));
+    }
 
 
-  //   @Test
-  //   public void testShipPlaceAtPositionAndDirectionContainsTheCoordinatesGivenAsString() throws Exception{
-  //    Coordinate start = new Coordinate("C4");
-  //    List<Coordinate> coords = factory.coordsWithLengthPositionedAtInDirection(4, start, Direction.EAST);      
-  //    assertFalse(coords.contains(new Coordinate("c3")));
-  //    assertTrue(coords.contains(new Coordinate("c4")));
-  //    assertTrue(coords.contains(new Coordinate("c5")));
-  //    assertTrue(coords.contains(new Coordinate("c6")));
-  //    assertTrue(coords.contains(new Coordinate("c7")));
-  //    assertFalse(coords.contains(new Coordinate("c8")));
-  //    assertEquals(4, coords.size());
-  //   }
+    @Test
+    public void testShipPlaceAtPositionAndDirectionContainsTheCoordinatesGivenAsString() throws Exception{
+     Coordinate start = new Coordinate("C4");
+     List<Coordinate> coords = factory.coordsWithLengthPositionedAtInDirection(4, start, Direction.EAST);      
+     assertFalse(coords.contains(new Coordinate("c3")));
+     assertTrue(coords.contains(new Coordinate("c4")));
+     assertTrue(coords.contains(new Coordinate("c5")));
+     assertTrue(coords.contains(new Coordinate("c6")));
+     assertTrue(coords.contains(new Coordinate("c7")));
+     assertFalse(coords.contains(new Coordinate("c8")));
+     assertEquals(4, coords.size());
+    }
 
-  //   @Test
-  //   public void testShipPlacedAtPositionAndDirectionContainsCoordinatesAtIndex() throws Exception {
-  //    Coordinate start = new Coordinate("A1");   
-  //    List<Coordinate> result = factory.coordsWithLengthPositionedAtInDirection(5, start, Direction.SOUTH);
-  //    assertEquals(start, result.get(0));
-  //    assertEquals(new Coordinate("A1"), result.get(0));
-  //    assertEquals(new Coordinate("B1"), result.get(1));
-  //    assertEquals(new Coordinate("C1"), result.get(2));
-  //    assertEquals(new Coordinate("D1"), result.get(3));
-  //    assertEquals(new Coordinate("E1"), result.get(4));
-  //    assertEquals(5, result.size());
-  //   }
+    @Test
+    public void testShipPlacedAtPositionAndDirectionContainsCoordinatesAtIndex() throws Exception {
+     Coordinate start = new Coordinate("A1");   
+     List<Coordinate> result = factory.coordsWithLengthPositionedAtInDirection(5, start, Direction.SOUTH);
+     assertEquals(start, result.get(0));
+     assertEquals(new Coordinate("A1"), result.get(0));
+     assertEquals(new Coordinate("B1"), result.get(1));
+     assertEquals(new Coordinate("C1"), result.get(2));
+     assertEquals(new Coordinate("D1"), result.get(3));
+     assertEquals(new Coordinate("E1"), result.get(4));
+     assertEquals(5, result.size());
+    }
 
-  //   @Test
-  //   public void testShipPlaceAtPositionAndDirectionDoesNotTheCoordinatesAtProperIndex() throws Exception{
-  //    Coordinate start = new Coordinate("C4");
-  //    List<Coordinate> coords = factory.coordsWithLengthPositionedAtInDirection(4, start, Direction.EAST);      
-  //    assertFalse(coords.contains(new Coordinate("c3")));
-  //    assertTrue(coords.contains(new Coordinate("c4")));
-  //    assertTrue(coords.contains(new Coordinate("c5")));
-  //    assertTrue(coords.contains(new Coordinate("c6")));
-  //    assertTrue(coords.contains(new Coordinate("c7")));
-  //    assertFalse(coords.contains(new Coordinate("c8")));
-  //    assertEquals(4, coords.size());
-  //   } 
+    @Test
+    public void testShipPlaceAtPositionAndDirectionDoesNotTheCoordinatesAtProperIndex() throws Exception{
+     Coordinate start = new Coordinate("C4");
+     List<Coordinate> coords = factory.coordsWithLengthPositionedAtInDirection(4, start, Direction.EAST);      
+     assertFalse(coords.contains(new Coordinate("c3")));
+     assertTrue(coords.contains(new Coordinate("c4")));
+     assertTrue(coords.contains(new Coordinate("c5")));
+     assertTrue(coords.contains(new Coordinate("c6")));
+     assertTrue(coords.contains(new Coordinate("c7")));
+     assertFalse(coords.contains(new Coordinate("c8")));
+     assertEquals(4, coords.size());
+    } 
 }
