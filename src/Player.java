@@ -72,9 +72,7 @@ public class Player {
             }
     }
     public CellState checkShotOceanGrid(Coordinate shot){
-        List<Ship> ships = factory.getShips();
-        List<Coordinate> coords;
-
+        List<Ship> ships = factory.getShipList();
         CellState state = oceanGrid.getCellState(shot);
         switch (state) {
             case CellState.OCCUPIED:
@@ -82,10 +80,11 @@ public class Player {
                 oceanGrid.setCellState(shot, CellState.HIT);
                 for (Ship ship : ships){
                     if(ship.getCoordinates().contains(shot)){
-                        ship.addHitCount();
-                        if(ship.isSunk()== true){
-                            System.out.println("The "+ ship.getShipName() +" ship has sunk");
-                            shipCount +=1;
+                        ship.registerHit();
+                        if(ship.isSunk() == true){
+                            SplashPageOptions.displayShipSunk();
+                            System.out.println("The "+ ship.getShipName() +" has sunk");
+                            shipCount++;
                         }
                     }
 
@@ -94,9 +93,11 @@ public class Player {
                 break;
             case CellState.HIT :
                 System.out.println("You have hit the Ship already");
+                state = CellState.OCCUPIED;
                 break;
             case CellState.MISS :
                 System.out.println("You have hit this cell already");
+                state = CellState.OCCUPIED;
                 break;
             case CellState.EMPTY:
                 System.out.println("You have missed");
@@ -104,6 +105,7 @@ public class Player {
                 state = CellState.MISS;
                 break;
         }
+        ConsoleHelper.getInput("Press Enter to continue...  ");
         return state;
 
     }

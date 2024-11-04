@@ -10,7 +10,7 @@ public class WinnerDisplay {
     }
 
     // announce the winner and print their ocean grid
-    public void printWinnerDisplay(String name, OceanGrid oceanGrid) {
+    public static void printWinnerDisplay(String name, Grid oceanGrid) {
         System.out.println("**************************************************");
         System.out.println("***** " + name.toUpperCase() + " WINS!!! *****");
         System.out.println("**************************************************");

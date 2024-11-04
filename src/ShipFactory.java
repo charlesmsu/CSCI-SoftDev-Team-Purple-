@@ -55,6 +55,9 @@ public abstract class ShipFactory {
         }
         return shipsCoords;
     }
+    protected List<Ship> getShipList() {
+        return ships;
+    }
 
     protected boolean shipOverLaps(Ship ship, List<Ship> ships) {
         for (Ship existingShip : ships) {
