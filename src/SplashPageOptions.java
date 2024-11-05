@@ -4,12 +4,14 @@ public class SplashPageOptions {
 
     public void displayTitle(){
         System.out.print(
+            Colors.RED +
         "                                                                            \n" +    
         "██████   █████  ████████ ████████ ██      ███████ ███████ ██   ██ ██ ██████ \n" + 
         "██   ██ ██   ██    ██       ██    ██      ██      ██      ██   ██ ██ ██   ██\n" +
         "██████  ███████    ██       ██    ██      █████   ███████ ███████ ██ ██████ \n" +
         "██   ██ ██   ██    ██       ██    ██      ██           ██ ██   ██ ██ ██     \n" + 
         "██████  ██   ██    ██       ██    ███████ ███████ ███████ ██   ██ ██ ██     \n" +
+        Colors.RESET +
         "\n"
         );
     }
@@ -24,15 +26,18 @@ public class SplashPageOptions {
     "                   =====| |.---------------------------. | |====            \n" +            
     "     <--------------------'   .  .  .  .  .  .  .  .   '--------------/     \n" +            
     "       \\                                                             /     \n" +            
-    "        \\_____________________________BATTLESHIP____________________/      \n" +            
+    "        \\_____________________________BATTLESHIP____________________/      \n" + 
+    Colors.BLUE +           
     "    wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww   \n" +            
     "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwWWWW\n" +            
-    "    wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww     \n" +            
+    "    wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww     \n" +
+    Colors.RESET +            
     "\n");
     }
 
     public static void displayShipSunk() {
         System.out.print(
+    Colors.RED +
     "                                      ___                                   \n" +
     "                              __,-~~/~    `---.                             \n" +
     "                            _/_,---(      ,    )                            \n" +
@@ -45,10 +50,12 @@ public class SplashPageOptions {
     "                                   I;|.|.|                                  \n" +       
     "     <--------------------'   .  . I;|.|.|.  .  .  .   '--------------/     \n" +            
     "       \\                         <|i::|i|`.                          /     \n" +            
-    "        \\_______________________(` ^'\\\"`-' \\\")__________________/      \n" +            
+    "        \\_______________________(` ^'\\\"`-' \\\")__________________/      \n" + 
+    Colors.BLUE +           
     "    wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww   \n" +            
     "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww \n" +            
-    "    wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww     \n" +            
+    "    wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww     \n" + 
+    Colors.RESET +           
     "\n");
     }
 
