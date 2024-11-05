@@ -20,7 +20,7 @@ public class ShipSunkTests {
 
     @Test
     public void testShipIsNotSunk() throws Exception {
-        Ship ship = new Ship("Submaring", 2);
+        Ship ship = new Ship("Submarine", 2);
         ship.setCoordinates(Arrays.asList(new Coordinate(1, 1), new Coordinate(1, 2)));
         ship.registerHit();
         assertFalse(ship.isSunk());
