@@ -13,7 +13,7 @@ public class ShipFactoryTests {
     }
 
     @Test (expected = Exception.class)
-    public void testOffToTop() throws Exception {
+    public void testOffTheTop() throws Exception {
         Coordinate start = new Coordinate("d2");
         List<Coordinate> result = factory.coordsWithLengthPositionedAtInDirection(5, start, Direction.NORTH);
     }
@@ -21,6 +21,12 @@ public class ShipFactoryTests {
     @Test (expected = Exception.class)
     public void testOffTheBottom() throws Exception {
        Coordinate start = new Coordinate(8, 8);
+       List<Coordinate> result = factory.coordsWithLengthPositionedAtInDirection(5, start, Direction.SOUTH);
+    }
+
+    @Test (expected = Exception.class)
+    public void testOffOfTheBottom() throws Exception {
+       Coordinate start = new Coordinate("G5");
        List<Coordinate> result = factory.coordsWithLengthPositionedAtInDirection(5, start, Direction.SOUTH);
     }
 
