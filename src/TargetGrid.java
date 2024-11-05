@@ -10,7 +10,7 @@ public class TargetGrid extends Grid {
         for(int column = 0; column < 10; column++){
                 
             if(cells[row][column].getState() == CellState.HIT){
-                System.out.print(" X |");
+                System.out.print(Colors.RED + " X " + Colors.RESET + "|");
             }else if(cells[row][column].getState() == CellState.MISS){
                 System.out.print(" O |");
             }else{

@@ -4,14 +4,14 @@ public class SplashPageOptions {
 
     public void displayTitle(){
         System.out.print(
-            Colors.RED +
+            Colors.RED + 
         "                                                                            \n" +    
         "██████   █████  ████████ ████████ ██      ███████ ███████ ██   ██ ██ ██████ \n" + 
         "██   ██ ██   ██    ██       ██    ██      ██      ██      ██   ██ ██ ██   ██\n" +
         "██████  ███████    ██       ██    ██      █████   ███████ ███████ ██ ██████ \n" +
         "██   ██ ██   ██    ██       ██    ██      ██           ██ ██   ██ ██ ██     \n" + 
         "██████  ██   ██    ██       ██    ███████ ███████ ███████ ██   ██ ██ ██     \n" +
-        Colors.RESET +
+        Colors.RESET + 
         "\n"
         );
     }
@@ -50,8 +50,7 @@ public class SplashPageOptions {
     "                                   I;|.|.|                                  \n" +       
     "     <--------------------'   .  . I;|.|.|.  .  .  .   '--------------/     \n" +            
     "       \\                         <|i::|i|`.                          /     \n" +            
-    "        \\_______________________(` ^'\\\"`-' \\\")__________________/      \n" + 
-    Colors.BLUE +           
+    "        \\_______________________(` ^'\\\"`-' \\\")__________________/      \n" + Colors.BLUE +  "\n" +         
     "    wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww   \n" +            
     "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww \n" +            
     "    wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww     \n" + 

@@ -10,7 +10,7 @@ public class OceanGrid extends Grid{
             if (cells[row][column].getState() == CellState.OCCUPIED) {
                 System.out.print(" S |");
             } else if (cells[row][column].getState() == CellState.HIT) {
-                System.out.print(" X |");
+                System.out.print(Colors.RED + " X " + Colors.RESET + "|");
             } else if (cells[row][column].getState() == CellState.MISS) {
                 System.out.print(" O |");
             } else {
