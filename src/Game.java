@@ -135,7 +135,7 @@ public class Game {
             // display ship grid wait for player input to continue
             ConsoleHelper.getInput("Press Enter To Continue");
             // Clear Screen method
-            ConsoleHelper.clearScreen(20);
+            ConsoleHelper.clearScreen(55);
         }
     }
 
