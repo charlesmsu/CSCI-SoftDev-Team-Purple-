@@ -166,6 +166,7 @@ public class Game {
             players.get(0).getOceanGrid().printGrid();
             
             if (players.get(1).checkShipCount()) {
+                ConsoleHelper.clearScreen();
                 WinnerDisplay.printWinnerDisplay(players.get(0).getPlayerName(), players.get(0).getOceanGrid());
                 break;
             }
@@ -201,31 +202,29 @@ public class Game {
             ConsoleHelper.clearScreen();
 
             if (players.get(0).checkShipCount() == true) {
-            ConsoleHelper.clearScreen();
-    
-            if (players.get(0).checkShipCount()) {
+                ConsoleHelper.clearScreen();
                 WinnerDisplay.printWinnerDisplay(players.get(1).getPlayerName(), players.get(1).getOceanGrid());
                 break;
             }
         }
     }
-    
+
     // Method to start one-player game mode
     private void startOnePlayerGame() {
         ConsoleHelper.clearScreen();
         System.out.println("Starting One Player Game (You vs. Computer)...");
-    
+
         // Add human player
         Player humanPlayer = new Player();
         humanPlayer.promptForPlayerName();
         humanPlayer.getPlayerShips(humanPlayer);
         players.add(humanPlayer);
-    
+
         // Add AI player
         Player aiPlayer = new AIPlayer();
         aiPlayer.getPlayerShips(aiPlayer);
         players.add(aiPlayer);
-    
+
         playCycle();
     }
-}    
+}
