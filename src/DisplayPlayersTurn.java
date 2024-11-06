@@ -1,7 +1,7 @@
 public class DisplayPlayersTurn {
 
     public static void showPlayerTurn(Player player) {
-        ConsoleHelper.clearScreen(30);
+        ConsoleHelper.clearScreen();
         String playerName = player.getPlayerName();
         ConsoleHelper.delayPrint(1);
 
