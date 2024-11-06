@@ -33,7 +33,7 @@ public class Game {
             switch (choice) {
                 case 1:
                     startOnePlayerGame();
-                    ConsoleHelper.clearScreen(30);
+                    ConsoleHelper.clearScreen();
                     System.out.println("Starting One Player Game...\n");
                     // select Computer level Difficulty
                     // start by getting the players names request player ones name first
@@ -174,7 +174,7 @@ public class Game {
 
             ConsoleHelper.clearScreen();
 
-            ConsoleHelper.clearScreen(50);
+            ConsoleHelper.clearScreen();
     
             ConsoleHelper.getInput("It is " + players.get(1).getPlayerName() + "'s turn. \nPress Enter To Continue:");
             players.get(1).getTargetGrid().printGrid();
@@ -201,7 +201,7 @@ public class Game {
             ConsoleHelper.clearScreen();
 
             if (players.get(0).checkShipCount() == true) {
-            ConsoleHelper.clearScreen(50);
+            ConsoleHelper.clearScreen();
     
             if (players.get(0).checkShipCount()) {
                 WinnerDisplay.printWinnerDisplay(players.get(1).getPlayerName(), players.get(1).getOceanGrid());
@@ -212,7 +212,7 @@ public class Game {
     
     // Method to start one-player game mode
     private void startOnePlayerGame() {
-        ConsoleHelper.clearScreen(30);
+        ConsoleHelper.clearScreen();
         System.out.println("Starting One Player Game (You vs. Computer)...");
     
         // Add human player
