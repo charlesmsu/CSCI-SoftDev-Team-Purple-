@@ -32,7 +32,8 @@ public class Game {
 
             switch (choice) {
                 case 1:
-                    ConsoleHelper.clearScreen();
+                    startOnePlayerGame();
+                    ConsoleHelper.clearScreen(30);
                     System.out.println("Starting One Player Game...\n");
                     // select Computer level Difficulty
                     // start by getting the players names request player ones name first
@@ -145,6 +146,7 @@ public class Game {
             ConsoleHelper.getInput("It is " + players.get(0).getPlayerName() + "'s turn. \nPress Enter To Continue:");
             players.get(0).getTargetGrid().printGrid();
             players.get(0).getOceanGrid().printGrid();
+            
             while (true) {
                 try {
                     cord = new Coordinate(ConsoleHelper.getShot());
@@ -159,21 +161,25 @@ public class Game {
                     ConsoleHelper.getInput("Please enter a valid coordinate (ex: b4)");
                 }
             }
-
-
+    
             players.get(0).getTargetGrid().printGrid();
             players.get(0).getOceanGrid().printGrid();
-            if (players.get(1).checkShipCount() == true) {
+            
+            if (players.get(1).checkShipCount()) {
                 WinnerDisplay.printWinnerDisplay(players.get(0).getPlayerName(), players.get(0).getOceanGrid());
                 break;
             }
+            
             ConsoleHelper.getInput("Your Grids have been updated. \nPress Enter To Finish your turn:");
 
             ConsoleHelper.clearScreen();
 
+            ConsoleHelper.clearScreen(50);
+    
             ConsoleHelper.getInput("It is " + players.get(1).getPlayerName() + "'s turn. \nPress Enter To Continue:");
             players.get(1).getTargetGrid().printGrid();
             players.get(1).getOceanGrid().printGrid();
+            
             while (true) {
                 try {
                     cord = new Coordinate(ConsoleHelper.getShot());
@@ -188,52 +194,38 @@ public class Game {
                     ConsoleHelper.getInput("Please enter a valid coordinate (ex: b4)");
                 }
             }
-
+    
             players.get(1).getTargetGrid().printGrid();
             players.get(1).getOceanGrid().printGrid();
             ConsoleHelper.getInput("Your Grids have been updated \nPress Enter to Finish your turn:");
             ConsoleHelper.clearScreen();
 
             if (players.get(0).checkShipCount() == true) {
+            ConsoleHelper.clearScreen(50);
+    
+            if (players.get(0).checkShipCount()) {
                 WinnerDisplay.printWinnerDisplay(players.get(1).getPlayerName(), players.get(1).getOceanGrid());
                 break;
             }
-
         }
-        // some two player game functionality i'm putting in as part of
-        // DisplayPlayersTurn(), can be used, doesn't have to, just figured it would be
-        // useful to have on standby if the time came
-
-        // public void startTwoPlayerGame() {
-        // Player player1 = new Player();
-        // Player player2 = new Player();
-        // player1.promptForPlayerName();
-        // player2.promptForPlayerName();
-
-        // TargetGrid player1TargetGrid = new TargetGrid();
-        // OceanGrid player1OceanGrid = new OceanGrid();
-        // TargetGrid player2TargetGrid = new TargetGrid();
-        // OceanGrid player2OceanGrid = new OceanGrid();
-
-        // SwitchPlayers switchPlayers = new SwitchPlayers(player1, player2,
-        // player1TargetGrid, player1OceanGrid,
-        // player2TargetGrid, player2OceanGrid);
-
-        // while (!gameOver) {
-        // ShotResult result = switchPlayers.playTurn();
-        // gameOver = checkForWinner(switchPlayers);
-        // }
-
-        // System.out.println("Game over! Thanks for playing.");
-        // }
-
-        // private boolean checkForWinner(SwitchPlayers switchPlayers) {
-        // OceanGrid opponentOceanGrid = switchPlayers.getOpponentOceanGrid();
-        // if (opponentOceanGrid.allShipsSunk()) {
-        // System.out.println(switchPlayers.getCurrentPlayer().getPlayerName() + "
-        // wins!");
-        // return true;
-        // }
-        // return false;
     }
-}
+    
+    // Method to start one-player game mode
+    private void startOnePlayerGame() {
+        ConsoleHelper.clearScreen(30);
+        System.out.println("Starting One Player Game (You vs. Computer)...");
+    
+        // Add human player
+        Player humanPlayer = new Player();
+        humanPlayer.promptForPlayerName();
+        humanPlayer.getPlayerShips(humanPlayer);
+        players.add(humanPlayer);
+    
+        // Add AI player
+        Player aiPlayer = new AIPlayer();
+        aiPlayer.getPlayerShips(aiPlayer);
+        players.add(aiPlayer);
+    
+        playCycle();
+    }
+}    
