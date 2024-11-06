@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 
 public class ConsoleHelper {
 
-    private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); 
+    private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
     public static String getInput(final String prompt) {
         String inStr = "";
@@ -17,7 +17,7 @@ public class ConsoleHelper {
         return inStr;
     }
 
-    public static int getInputWithInRange(String prompt, int min, int max){
+    public static int getInputWithInRange(String prompt, int min, int max) {
         int inInt = 0;
         String inStr = "";
         System.out.print(prompt);
@@ -26,11 +26,11 @@ public class ConsoleHelper {
             inStr = reader.readLine();
             try {
                 inInt = Integer.parseInt(inStr);
-                if(inInt > max || inInt < min){
+                if (inInt > max || inInt < min) {
                     System.out.println("You must enter an integer between " + min + " and " + max + ".");
                     inInt = getInputWithInRange(prompt, min, max); // Recursively call until valid input
                 }
-            } catch(NumberFormatException e) {
+            } catch (NumberFormatException e) {
                 System.out.println("You must enter a number");
                 inInt = getInputWithInRange(prompt, min, max); // Recursively call until valid input
             }
@@ -51,22 +51,20 @@ public class ConsoleHelper {
         return inStr;
     }
 
-    //will delay screen display so players can see animations ascii art
-    public static void delayPrint(int seconds){
-        seconds = 1000*seconds;
-            try {
-                Thread.sleep(seconds);  
-            } catch (InterruptedException e) {
-                System.out.println("Thread was interrupted.");
-            }
+    // will delay screen display so players can see animations ascii art
+    public static void delayPrint(int seconds) {
+        seconds = 1000 * seconds;
+        try {
+            Thread.sleep(seconds);
+        } catch (InterruptedException e) {
+            System.out.println("Thread was interrupted.");
         }
-        //intended to clear screens inbetween player turns
-        public static void clearScreen(int linesPrinted){
+    }
 
-            for(int i=0; i < linesPrinted; i++){
-                System.out.println();
-            }
-        }
-    
-    
+    // intended to clear screens inbetween player turns
+    public static void clearScreen() {
+        System.out.print("\033\143");
+        System.out.flush();
+    }
+
 }

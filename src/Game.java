@@ -32,7 +32,7 @@ public class Game {
 
             switch (choice) {
                 case 1:
-                    ConsoleHelper.clearScreen(30);
+                    ConsoleHelper.clearScreen();
                     System.out.println("Starting One Player Game...\n");
                     // select Computer level Difficulty
                     // start by getting the players names request player ones name first
@@ -74,7 +74,7 @@ public class Game {
                     // screen)
                     break;
                 case 2:
-                    ConsoleHelper.clearScreen(30);
+                    ConsoleHelper.clearScreen();
                     System.out.println("Starting Two Player Game...\n");
                     // make players
                     addPlayer();
@@ -84,7 +84,7 @@ public class Game {
                     // display ship grid wait for player input to continue
 
                     // Clear Screen method
-                    ConsoleHelper.clearScreen(20);
+                    ConsoleHelper.clearScreen();
                     playCycle();
 
                     // will need to enter loop for the players to take shots on each others boards
@@ -101,7 +101,7 @@ public class Game {
                     break;
 
                 case 3:
-                    ConsoleHelper.clearScreen(30);
+                    ConsoleHelper.clearScreen();
                     System.out.println("Displaying Tutorial...");
                     Tutorial.displayTutorial();
                     break;
@@ -135,7 +135,7 @@ public class Game {
             // display ship grid wait for player input to continue
             ConsoleHelper.getInput("Press Enter To Continue");
             // Clear Screen method
-            ConsoleHelper.clearScreen(55);
+            ConsoleHelper.clearScreen();
         }
     }
 
@@ -169,7 +169,7 @@ public class Game {
             }
             ConsoleHelper.getInput("Your Grids have been updated. \nPress Enter To Finish your turn:");
 
-            ConsoleHelper.clearScreen(50);
+            ConsoleHelper.clearScreen();
 
             ConsoleHelper.getInput("It is " + players.get(1).getPlayerName() + "'s turn. \nPress Enter To Continue:");
             players.get(1).getTargetGrid().printGrid();
@@ -192,7 +192,7 @@ public class Game {
             players.get(1).getTargetGrid().printGrid();
             players.get(1).getOceanGrid().printGrid();
             ConsoleHelper.getInput("Your Grids have been updated \nPress Enter to Finish your turn:");
-            ConsoleHelper.clearScreen(50);
+            ConsoleHelper.clearScreen();
 
             if (players.get(0).checkShipCount() == true) {
                 WinnerDisplay.printWinnerDisplay(players.get(1).getPlayerName(), players.get(1).getOceanGrid());

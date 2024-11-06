@@ -40,14 +40,6 @@ public class Player {
         return targetGrid;
     }
 
-    public void setShot(){
-        try {
-            this.shot = new Coordinate(ConsoleHelper.getShot());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
     public void getPlayerShips(Player player){
         int playerString = ConsoleHelper.getInputWithInRange("\nPress 1 to place your ships manually\nPress 2 to place your ships randomly: ",1,2);
         switch (playerString) {
