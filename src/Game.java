@@ -146,6 +146,7 @@ public class Game {
             ConsoleHelper.getInput("It is " + players.get(0).getPlayerName() + "'s turn. \nPress Enter To Continue:");
             players.get(0).getTargetGrid().printGrid();
             players.get(0).getOceanGrid().printGrid();
+            
             while (true) {
                 try {
                     cord = new Coordinate(ConsoleHelper.getShot());
@@ -160,21 +161,22 @@ public class Game {
                     ConsoleHelper.getInput("Please enter a valid coordinate (ex: b4)");
                 }
             }
-
-
+    
             players.get(0).getTargetGrid().printGrid();
             players.get(0).getOceanGrid().printGrid();
-            if (players.get(1).checkShipCount() == true) {
+            
+            if (players.get(1).checkShipCount()) {
                 WinnerDisplay.printWinnerDisplay(players.get(0).getPlayerName(), players.get(0).getOceanGrid());
                 break;
             }
+            
             ConsoleHelper.getInput("Your Grids have been updated. \nPress Enter To Finish your turn:");
-
             ConsoleHelper.clearScreen(50);
-
+    
             ConsoleHelper.getInput("It is " + players.get(1).getPlayerName() + "'s turn. \nPress Enter To Continue:");
             players.get(1).getTargetGrid().printGrid();
             players.get(1).getOceanGrid().printGrid();
+            
             while (true) {
                 try {
                     cord = new Coordinate(ConsoleHelper.getShot());
@@ -189,34 +191,35 @@ public class Game {
                     ConsoleHelper.getInput("Please enter a valid coordinate (ex: b4)");
                 }
             }
-
+    
             players.get(1).getTargetGrid().printGrid();
             players.get(1).getOceanGrid().printGrid();
             ConsoleHelper.getInput("Your Grids have been updated \nPress Enter to Finish your turn:");
             ConsoleHelper.clearScreen(50);
-
-            if (players.get(0).checkShipCount() == true) {
+    
+            if (players.get(0).checkShipCount()) {
                 WinnerDisplay.printWinnerDisplay(players.get(1).getPlayerName(), players.get(1).getOceanGrid());
                 break;
             }
-
         }
-
-        private void startOnePlayerGame() {
-            ConsoleHelper.clearScreen(30);
-            System.out.println("Starting One Player Game (You vs. Computer)...");
+    }
     
-            // adds human player
-            Player humanPlayer = new Player();
-            humanPlayer.promptForPlayerName();
-            humanPlayer.getPlayerShips(humanPlayer);
-            players.add(humanPlayer);
+    // Method to start one-player game mode
+    private void startOnePlayerGame() {
+        ConsoleHelper.clearScreen(30);
+        System.out.println("Starting One Player Game (You vs. Computer)...");
     
-            // adds ai player
-            Player aiPlayer = new AIPlayer();
-            aiPlayer.getPlayerShips(aiPlayer);
-            players.add(aiPlayer);
+        // Add human player
+        Player humanPlayer = new Player();
+        humanPlayer.promptForPlayerName();
+        humanPlayer.getPlayerShips(humanPlayer);
+        players.add(humanPlayer);
     
-            playCycle();
-        }
-}
+        // Add AI player
+        Player aiPlayer = new AIPlayer();
+        aiPlayer.getPlayerShips(aiPlayer);
+        players.add(aiPlayer);
+    
+        playCycle();
+    }
+}    
