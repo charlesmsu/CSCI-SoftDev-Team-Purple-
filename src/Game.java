@@ -188,7 +188,7 @@ public class Game {
                     if (state == CellState.OCCUPIED) {
                         System.out.println("Try again");
                         continue;
-                    }
+                    } 
                     players.get(1).updateTargetGrid(cord, state);
                     break;
                 } catch (Exception e) {
