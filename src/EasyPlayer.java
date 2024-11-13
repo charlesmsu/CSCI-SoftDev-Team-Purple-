@@ -2,7 +2,7 @@ public class EasyPlayer implements IPlayer {
 
     @Override
     public String getName() {
-        return "Rear Admiral Lower Half";
+        return "Shooter in the dark";
     }
 
     @Override
