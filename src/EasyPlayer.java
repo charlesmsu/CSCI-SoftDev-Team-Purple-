@@ -1,5 +1,9 @@
 public class EasyPlayer implements IPlayer {
 
+    OceanGrid aiOceanGrid = new OceanGrid();
+    TargetGrid aiTargetGrid = new TargetGrid();
+    ShipFactory aiShipFactory = new AutomaticShipFactory();
+
     @Override
     public String getName() {
         return "Shooter in the dark";
@@ -13,14 +17,12 @@ public class EasyPlayer implements IPlayer {
 
     @Override
     public ShotResult receiveShot(Coordinate shot) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'receiveShot'");
+        return aiOceanGrid.receiveShot(shot);
     }
 
     @Override
     public void receiveShotResult(Coordinate shot, ShotResult shotResult) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'receiveShotResult'");
+        aiTargetGrid.receiveShotResult(shotResult, shot);
     }
 
     @Override
@@ -31,20 +33,17 @@ public class EasyPlayer implements IPlayer {
 
     @Override
     public void placeShips() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'placeShips'");
+        aiOceanGrid.addShips(aiShipFactory);
     }
 
     @Override
     public void printOceanGrid() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'printOceanGrid'");
+        aiOceanGrid.printGrid();
     }
 
     @Override
     public void printTargetGrid() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'printTargetGrid'");
+       aiTargetGrid.printGrid();
     }
 
     @Override
