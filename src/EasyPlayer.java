@@ -2,8 +2,7 @@ public class EasyPlayer implements IPlayer {
 
     @Override
     public String getName() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getName'");
+        return "Rear Admiral Lower Half";
     }
 
     @Override
