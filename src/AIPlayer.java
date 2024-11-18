@@ -88,6 +88,11 @@ public class AIPlayer implements IPlayer {
     }
 
     @Override
+    public OceanGrid getOceanGrid() {
+        return oceanGrid;
+    }
+
+    @Override
     public String getRecentSunkShip() {
         return "AIPlayer has sunk your ship!"; // message
     }
