@@ -8,14 +8,15 @@ public class HumanPlayer implements IPlayer{
     private Coordinate shot;
     protected OceanGrid oceanGrid = new OceanGrid();
     protected TargetGrid targetGrid = new TargetGrid();
+
     private List<Coordinate> shotList = new ArrayList<Coordinate>();
     
     
-    protected ShipFactory builder;
+    protected ShipFactory aishShipFactory = new AutomaticShipFactory();
 
-    public HumanPlayer(String name, ShipFactory builder) {
+    public HumanPlayer(String name, ShipFactory aishShipFactory) {
         this.name = name;
-        this.builder = builder;
+        this.aishShipFactory = aishShipFactory;
     }
 
     @Override
@@ -42,7 +43,7 @@ public class HumanPlayer implements IPlayer{
    
     @Override
     public void placeShips(){
-        for (Ship ship : builder.getShips()) {
+        for (Ship ship : aishShipFactory.getShips()) {
             oceanGrid.placeShip(ship);
         }
 
@@ -90,20 +91,17 @@ public class HumanPlayer implements IPlayer{
 
     @Override
     public boolean shipsAreSunk() {
-        if(oceanGrid.getSunkShips().size() >= 5){
-            return true;
-        }else{
-            return false;
-        }
+        if(aiShipFactory.numberOfSunkShips()==5) {
+            return true;}
+            else {
+                return false;
+            }
     }
 
     @Override
-    public String getRecentSunkShip(){
-        List<String> sunkShips = oceanGrid.getSunkShips();
-
-        
-        String mostRecentSunkShip = sunkShips.get(sunkShips.size()-1);
-        return mostRecentSunkShip;
-
+    public String getRecentSunkShip() {
+        return "The Rear Admiral has sunk your ship!";
     }
+
+
 }
