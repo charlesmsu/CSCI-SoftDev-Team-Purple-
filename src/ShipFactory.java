@@ -32,7 +32,7 @@ public abstract class ShipFactory {
                 break;
             }
             placedShips.add(ship);
-        }
+        }//made change to return the placed ships instead of the list of ships no changes were made too.
         return ships;// this is returning the list w
     }
 

@@ -122,6 +122,8 @@ public class Grid {
     protected void addShips(ShipFactory factory){
         for (Ship ship : factory.getShips()) {
             for(Coordinate cord: ship.getCoordinates()){
+                Cell cell = getCell(cord);
+                cell.setShip(ship);
                 setCellState(cord, CellState.OCCUPIED);
             }
        }

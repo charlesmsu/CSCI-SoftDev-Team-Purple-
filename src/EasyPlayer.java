@@ -2,26 +2,33 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class EasyPlayer implements IPlayer {
+    private OceanGrid aiOceanGrid;
+    private TargetGrid aiTargetGrid;
+    private AutomaticShipFactory aiShipFactory;
+    private Set<Coordinate> attemptedShots;
 
-    OceanGrid aiOceanGrid = new OceanGrid();
-    TargetGrid aiTargetGrid = new TargetGrid();
-    ShipFactory aiShipFactory = new AutomaticShipFactory();
-    Set<Coordinate> attemptedShots = new HashSet<>();
+    public EasyPlayer() {
+        aiOceanGrid = new OceanGrid();
+        aiTargetGrid = new TargetGrid();
+        aiShipFactory = new AutomaticShipFactory();
+        attemptedShots = new HashSet<>();
+        placeShips(); // automatically place ships
+    }
 
     @Override
     public String getName() {
-        return "Shooter in the dark";
+        return "Rear Admiral (Lower Half)";
     }
 
     @Override
     public Coordinate takeShot() {
         Coordinate shot;
         do {
-            shot = Coordinate.randomCoordinate(); // random coord
-        } while (attemptedShots.contains(shot)); // no repeating shots
+            shot = Coordinate.randomCoordinate();
+        } while (attemptedShots.contains(shot));
 
-        attemptedShots.add(shot); // add shot to attempted set
-        System.out.println(getName() + " shoots at " + shot); // show ai shot
+        attemptedShots.add(shot);
+        System.out.println(getName() + " shoots at " + shot);
         return shot;
     }
 
@@ -66,8 +73,7 @@ public class EasyPlayer implements IPlayer {
 
     @Override
     public String getRecentSunkShip() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getRecentSunkShip'");
+        return "The Rear Admiral has sunk your ship!";
     }
 
 }
