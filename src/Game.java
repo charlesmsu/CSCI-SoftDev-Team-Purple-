@@ -13,7 +13,12 @@ import java.util.ArrayList;
 public class Game {
     public List<Player> players = new ArrayList<>();
     public Coordinate cord;
+    ShotResult result;
     boolean exit;
+    Player player1;
+    Player player2;
+    IPlayer playerI;
+
 
     public Game() {
         this.exit = false;
@@ -32,48 +37,34 @@ public class Game {
 
             switch (choice) {
                 case 1:
-                    startOnePlayerGame();
+
+
                     ConsoleHelper.clearScreen();
                     System.out.println("Starting One Player Game...\n");
-                    // select Computer level Difficulty
-                    // start by getting the players names request player ones name first
-                    // build the players grids then start
-                    // ask how player one would like set ships on the screen manual or randomly
-                    // add ships to players grid
-                    // display ship grid wait for player input to continue
-                    // computer player loop
-                    // display shot as it is taken(computer shot at ex:b4)
-                    // player ones turn
-
-                    // will need to enter loop for the players to take shots on each others boards
-                    // and update the grids
-                    // if statement to show when a ship has sunk
-                    // if true asscii art by the choosen one daniel-sun
-                    // if no ships left then we will display the WinnerDisplay
-
-                    // added a ConsoleHelper Clear Screen method - ex:
-                    // Consolehelper.clearScreen(number of lines you want to print to clear the
-                    // screen)
-
-                    // Clear Screen method
-                    // repeat the steps for player 2 below
-                    // start by getting the players names request player 2 name
-                    // build the players grids then start
-                    // ask how player one would like set ships on the screen manual or randomly
-                    // add ships to players grid
-                    // display ship grid wait for player input to continue
-                    // Clear Screen method
-
-                    // will need to enter loop for the players to take shots on each others boards
-                    // and update the grids
-                    // if statement to show when a ship has sunk
-                    // if true asscii art by the choosen one daniel-sun
-                    // if no ships left then we will display the WinnerDisplay
-
-                    // added a ConsoleHelper Clear Screen method - ex:
-                    // Consolehelper.clearScreen(number of lines you want to print to clear the
-                    // screen)
+                    player1 = new Player();
+            int difficulty = ConsoleHelper.getInputWithInRange("Which difficulty would you like to play?\n Easy Mode(1) \n Medium Mode(2) \n Hard Mode(3) \n",1,3);
+            switch (difficulty) {
+                case 1:
+                    playerI = new EasyPlayer();
                     break;
+                case 2:
+                    playerI = new EasyPlayer();
+                    break;
+                case 3:
+                    playerI = new EasyPlayer();
+                    break;
+                    
+            }
+            player1.promptForPlayerName();
+            player1.getPlayerShips();
+            player1.getTargetGrid().printGrid();
+            player1.getOceanGrid().printGrid();
+
+            playerI.placeShips();
+                    startOnePlayerGame(player1, playerI);
+
+                    break;
+
                 case 2:
                     ConsoleHelper.clearScreen();
                     System.out.println("Starting Two Player Game...\n");
@@ -82,22 +73,9 @@ public class Game {
                     addPlayer();
                     buildPlayers();
 
-                    // display ship grid wait for player input to continue
 
-                    // Clear Screen method
                     ConsoleHelper.clearScreen();
                     playCycle();
-
-                    // will need to enter loop for the players to take shots on each others boards
-                    // and update the grids
-
-                    // if statement to show when a ship has sunk
-                    // if true asscii art by the choosen one daniel-sun
-                    // if no ships left then we will display the WinnerDisplay
-
-                    // added a ConsoleHelper Clear Screen method - ex:
-                    // Consolehelper.clearScreen(number of lines you want to print to clear the
-                    // screen)
 
                     break;
 
@@ -127,7 +105,7 @@ public class Game {
         for (Player player : players) {
             System.out.println("Create new player:");
             player.promptForPlayerName();
-            player.getPlayerShips(player);
+            player.getPlayerShips();
             // ask how player one would like set ships on the screen manual or randomly
             // add ships to players grid
 
@@ -138,6 +116,61 @@ public class Game {
             // Clear Screen method
             ConsoleHelper.clearScreen();
         }
+    }
+    public void startOnePlayerGame(Player player1, IPlayer playerI) {
+        
+        while(true) {
+            
+            ConsoleHelper.getInput("\nIt is " +playerI.getName() + " turn. \n");
+            cord = playerI.takeShot();
+            result = player1.getOceanGrid().receiveShot(cord);
+            playerI.receiveShotResult(cord, result);
+            if (player1.checkShipCount()==true) {
+                WinnerDisplay.printWinnerDisplay(playerI.getName(), playerI.getOceanGrid());
+                break;
+            }
+
+            // player1s turn
+
+            ConsoleHelper.getInput("It is your turn.");
+            while(true){
+
+           
+            try {
+                cord = new Coordinate(ConsoleHelper.getShot());
+                break;
+
+            } catch (Exception e) {
+                System.out.println("Invalid input. Please enter a valid coordinate (row,col).");
+                continue;
+                
+            }
+        }
+            result = playerI.receiveShot(cord);
+            player1.getTargetGrid().receiveShotResult( result, cord);
+            
+            //check if player has won
+            if(playerI.shipsAreSunk() == true){
+                WinnerDisplay.printWinnerDisplay(player1.getPlayerName(), player1.getOceanGrid());
+                break;
+            }
+
+            //print grids and continue looping
+            player1.getTargetGrid().printGrid();
+            player1.getOceanGrid().printGrid();
+
+
+
+
+
+
+            
+
+
+            
+        }
+            
+
     }
 
     public void playCycle() {
@@ -210,7 +243,7 @@ public class Game {
     }
 
     // Method to start one-player game mode
-    private void startOnePlayerGame() {
+    /*private void startOnePlayerGame() {
         ConsoleHelper.clearScreen();
         System.out.println("Starting One Player Game (You vs. Computer)...");
 
@@ -227,4 +260,13 @@ public class Game {
 
         playCycle();
     }
+    public ShotResult convertCellstatetoShotResult(CellState state) {
+        ShotResult result;
+        if (state == CellState.HIT) { 
+            result = ShotResult.HIT;
+         }
+        if (state == CellState.MISS){
+            result = ShotResult.MISS;
+         }
+        if (state == CellState.)*/
 }

@@ -4,8 +4,8 @@ public class Player {
     private String playerName;
     private Coordinate shot;
     private ShipFactory factory;
-    private Grid oceanGrid = new OceanGrid();
-    private Grid targetGrid = new TargetGrid();
+    private OceanGrid oceanGrid = new OceanGrid();
+    private TargetGrid targetGrid = new TargetGrid();
     private int shipCount = 0;
 
     // constructor that optionally accepts a name
@@ -33,14 +33,14 @@ public class Player {
     }
 
 
-    public Grid getOceanGrid(){
+    public OceanGrid getOceanGrid(){
         return oceanGrid;
     }
-    public Grid getTargetGrid(){
+    public TargetGrid getTargetGrid(){
         return targetGrid;
     }
 
-    public void getPlayerShips(Player player){
+    public void getPlayerShips(){
         int playerString = ConsoleHelper.getInputWithInRange("\nPress 1 to place your ships manually\nPress 2 to place your ships randomly: ",1,2);
         switch (playerString) {
             case 1:

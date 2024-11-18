@@ -6,6 +6,7 @@ public class EasyPlayer implements IPlayer {
     OceanGrid aiOceanGrid = new OceanGrid();
     TargetGrid aiTargetGrid = new TargetGrid();
     ShipFactory aiShipFactory = new AutomaticShipFactory();
+    Set<Coordinate> attemptedShots = new HashSet<>();
 
     @Override
     public String getName() {
@@ -14,8 +15,14 @@ public class EasyPlayer implements IPlayer {
 
     @Override
     public Coordinate takeShot() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'takeShot'");
+        Coordinate shot;
+        do {
+            shot = Coordinate.randomCoordinate(); // random coord
+        } while (attemptedShots.contains(shot)); // no repeating shots
+
+        attemptedShots.add(shot); // add shot to attempted set
+        System.out.println(getName() + " shoots at " + shot); // show ai shot
+        return shot;
     }
 
     @Override
@@ -30,46 +37,26 @@ public class EasyPlayer implements IPlayer {
 
     @Override
     public boolean shipsAreSunk() {
-        // Use a set to collect unique ships
-        Set<Ship> shipsOnGrid = new HashSet<>();
-
-        // Iterate through all OceanGrid cells
-        for (int row = 0; row < 10; row++) {
-            for (int col = 0; col < 10; col++) {
-                Coordinate coordinate;
-                try {
-                    coordinate = new Coordinate(row, col);
-                } catch (Exception e) {
-                    continue;
-                }
-                Cell cell = aiOceanGrid.getCell(coordinate);
-                Ship ship = cell.getShip();
-
-                // Add ship to set if it exists
-                if (ship != null) {
-                    shipsOnGrid.add(ship);
-                }
-            }
+     if(aiShipFactory.numberOfSunkShips()==5) {
+        return true;}
+        else {
+            return false;
         }
-
-        // Check if all ships are sunk
-        for (Ship ship : shipsOnGrid) {
-            if (!ship.isSunk()) {
-                return false; // If any ship is not sunk return false
-            }
-        }
-
-        return true;
     }
 
     @Override
     public void placeShips() {
         aiOceanGrid.addShips(aiShipFactory);
+        System.out.println("aiplayers grid");
+        aiOceanGrid.printGrid();
     }
 
     @Override
     public void printOceanGrid() {
         aiOceanGrid.printGrid();
+    }
+    public Grid getOceanGrid() {
+        return aiOceanGrid;
     }
 
     @Override

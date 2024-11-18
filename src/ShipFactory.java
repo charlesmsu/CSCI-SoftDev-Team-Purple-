@@ -20,7 +20,6 @@ public abstract class ShipFactory {
                 try {
                     Coordinate start = getStartCoordinate(ship);
                     Direction dir = getStartDirection(ship);
-                    System.out.println(dir);
                     coords = coordsWithLengthPositionedAtInDirection(ship.getLength(), start, dir);
                     ship.setCoordinates(coords);
                     if (shipOverLaps(ship, placedShips) == true) {
@@ -28,7 +27,6 @@ public abstract class ShipFactory {
                     }
 
                 } catch (Exception e) {
-                    System.out.println("A ship is already here");
                     continue;
                 }
                 break;
@@ -69,5 +67,10 @@ public abstract class ShipFactory {
             }
         }
         return false;
+    }
+    public int numberOfSunkShips(){
+        int count = (int) ships.stream().filter(ship -> ship.getLength() == ship.getHitCount()).count();
+
+        return count;
     }
 }
