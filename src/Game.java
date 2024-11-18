@@ -17,8 +17,7 @@ public class Game {
     boolean exit;
     Player player1;
     Player player2;
-    IPlayer playerI;
-
+    IPlayer cPlayer;
 
     public Game() {
         this.exit = false;
@@ -38,30 +37,31 @@ public class Game {
             switch (choice) {
                 case 1:
 
-
                     ConsoleHelper.clearScreen();
                     System.out.println("Starting One Player Game...\n");
                     player1 = new Player();
-            int difficulty = ConsoleHelper.getInputWithInRange("Which difficulty would you like to play?\n Easy Mode(1) \n Medium Mode(2) \n Hard Mode(3) \n",1,3);
-            switch (difficulty) {
-                case 1:
-                    playerI = new EasyPlayer();
-                    break;
-                case 2:
-                    playerI = new EasyPlayer();
-                    break;
-                case 3:
-                    playerI = new EasyPlayer();
-                    break;
-                    
-            }
-            player1.promptForPlayerName();
-            player1.getPlayerShips();
-            player1.getTargetGrid().printGrid();
-            player1.getOceanGrid().printGrid();
+                    int difficulty = ConsoleHelper.getInputWithInRange(
+                            "Which difficulty would you like to play?\n Easy Mode(1) \n Medium Mode(2) \n Hard Mode(3) \n",
+                            1, 3);
+                    switch (difficulty) {
+                        case 1:
+                            cPlayer = new EasyPlayer();
+                            break;
+                        case 2:
+                            cPlayer = new EasyPlayer();
+                            break;
+                        case 3:
+                            cPlayer = new EasyPlayer();
+                            break;
 
-            playerI.placeShips();
-                    startOnePlayerGame(player1, playerI);
+                    }
+                    player1.promptForPlayerName();
+                    player1.getPlayerShips();
+                    player1.getTargetGrid().printGrid();
+                    player1.getOceanGrid().printGrid();
+
+                    cPlayer.placeShips();
+                    startOnePlayerGame(player1, cPlayer);
 
                     break;
 
@@ -72,7 +72,6 @@ public class Game {
                     addPlayer();
                     addPlayer();
                     buildPlayers();
-
 
                     ConsoleHelper.clearScreen();
                     playCycle();
@@ -117,59 +116,49 @@ public class Game {
             ConsoleHelper.clearScreen();
         }
     }
-    public void startOnePlayerGame(Player player1, IPlayer playerI) {
-        
-        while(true) {
-            
-            ConsoleHelper.getInput("\nIt is " +playerI.getName() + " turn. \n");
-            cord = playerI.takeShot();
+
+    public void startOnePlayerGame(Player player1, IPlayer cPlayer) {
+
+        while (true) {
+
+            ConsoleHelper.getInput("\nIt is " + cPlayer.getName() + " turn. \n");
+            cord = cPlayer.takeShot();
             result = player1.getOceanGrid().receiveShot(cord);
-            playerI.receiveShotResult(cord, result);
-            if (player1.checkShipCount()==true) {
-                WinnerDisplay.printWinnerDisplay(playerI.getName(), playerI.getOceanGrid());
+            cPlayer.receiveShotResult(cord, result);
+            if (player1.checkShipCount() == true) {
+                WinnerDisplay.printWinnerDisplay(cPlayer.getName(), cPlayer.getOceanGrid());
                 break;
             }
 
             // player1s turn
 
             ConsoleHelper.getInput("It is your turn.");
-            while(true){
+            while (true) {
 
-           
-            try {
-                cord = new Coordinate(ConsoleHelper.getShot());
-                break;
+                try {
+                    cord = new Coordinate(ConsoleHelper.getShot());
+                    break;
 
-            } catch (Exception e) {
-                System.out.println("Invalid input. Please enter a valid coordinate (row,col).");
-                continue;
-                
+                } catch (Exception e) {
+                    System.out.println("Invalid input. Please enter a valid coordinate (row,col).");
+                    continue;
+
+                }
             }
-        }
-            result = playerI.receiveShot(cord);
-            player1.getTargetGrid().receiveShotResult( result, cord);
-            
-            //check if player has won
-            if(playerI.shipsAreSunk() == true){
+            result = cPlayer.receiveShot(cord);
+            player1.getTargetGrid().receiveShotResult(result, cord);
+
+            // check if player has won
+            if (cPlayer.shipsAreSunk() == true) {
                 WinnerDisplay.printWinnerDisplay(player1.getPlayerName(), player1.getOceanGrid());
                 break;
             }
 
-            //print grids and continue looping
+            // print grids and continue looping
             player1.getTargetGrid().printGrid();
             player1.getOceanGrid().printGrid();
 
-
-
-
-
-
-            
-
-
-            
         }
-            
 
     }
 
@@ -179,7 +168,7 @@ public class Game {
             ConsoleHelper.getInput("It is " + players.get(0).getPlayerName() + "'s turn. \nPress Enter To Continue:");
             players.get(0).getTargetGrid().printGrid();
             players.get(0).getOceanGrid().printGrid();
-            
+
             while (true) {
                 try {
                     cord = new Coordinate(ConsoleHelper.getShot());
@@ -194,26 +183,26 @@ public class Game {
                     ConsoleHelper.getInput("Please enter a valid coordinate (ex: b4)");
                 }
             }
-    
+
             players.get(0).getTargetGrid().printGrid();
             players.get(0).getOceanGrid().printGrid();
-            
+
             if (players.get(1).checkShipCount()) {
                 ConsoleHelper.clearScreen();
                 WinnerDisplay.printWinnerDisplay(players.get(0).getPlayerName(), players.get(0).getOceanGrid());
                 break;
             }
-            
+
             ConsoleHelper.getInput("Your Grids have been updated. \nPress Enter To Finish your turn:");
 
             ConsoleHelper.clearScreen();
 
             ConsoleHelper.clearScreen();
-    
+
             ConsoleHelper.getInput("It is " + players.get(1).getPlayerName() + "'s turn. \nPress Enter To Continue:");
             players.get(1).getTargetGrid().printGrid();
             players.get(1).getOceanGrid().printGrid();
-            
+
             while (true) {
                 try {
                     cord = new Coordinate(ConsoleHelper.getShot());
@@ -221,14 +210,14 @@ public class Game {
                     if (state == CellState.OCCUPIED) {
                         System.out.println("Try again");
                         continue;
-                    } 
+                    }
                     players.get(1).updateTargetGrid(cord, state);
                     break;
                 } catch (Exception e) {
                     ConsoleHelper.getInput("Please enter a valid coordinate (ex: b4)");
                 }
             }
-    
+
             players.get(1).getTargetGrid().printGrid();
             players.get(1).getOceanGrid().printGrid();
             ConsoleHelper.getInput("Your Grids have been updated \nPress Enter to Finish your turn:");
@@ -243,30 +232,32 @@ public class Game {
     }
 
     // Method to start one-player game mode
-    /*private void startOnePlayerGame() {
-        ConsoleHelper.clearScreen();
-        System.out.println("Starting One Player Game (You vs. Computer)...");
-
-        // Add human player
-        Player humanPlayer = new Player();
-        humanPlayer.promptForPlayerName();
-        humanPlayer.getPlayerShips(humanPlayer);
-        players.add(humanPlayer);
-
-        // Add AI player
-        Player aiPlayer = new AIPlayer();
-        aiPlayer.getPlayerShips(aiPlayer);
-        players.add(aiPlayer);
-
-        playCycle();
-    }
-    public ShotResult convertCellstatetoShotResult(CellState state) {
-        ShotResult result;
-        if (state == CellState.HIT) { 
-            result = ShotResult.HIT;
-         }
-        if (state == CellState.MISS){
-            result = ShotResult.MISS;
-         }
-        if (state == CellState.)*/
+    /*
+     * private void startOnePlayerGame() {
+     * ConsoleHelper.clearScreen();
+     * System.out.println("Starting One Player Game (You vs. Computer)...");
+     * 
+     * // Add human player
+     * Player humanPlayer = new Player();
+     * humanPlayer.promptForPlayerName();
+     * humanPlayer.getPlayerShips(humanPlayer);
+     * players.add(humanPlayer);
+     * 
+     * // Add AI player
+     * Player aiPlayer = new AIPlayer();
+     * aiPlayer.getPlayerShips(aiPlayer);
+     * players.add(aiPlayer);
+     * 
+     * playCycle();
+     * }
+     * public ShotResult convertCellstatetoShotResult(CellState state) {
+     * ShotResult result;
+     * if (state == CellState.HIT) {
+     * result = ShotResult.HIT;
+     * }
+     * if (state == CellState.MISS){
+     * result = ShotResult.MISS;
+     * }
+     * if (state == CellState.)
+     */
 }
