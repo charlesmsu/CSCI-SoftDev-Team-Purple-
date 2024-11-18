@@ -44,36 +44,11 @@ public class EasyPlayer implements IPlayer {
 
     @Override
     public boolean shipsAreSunk() {
-        // Use a set to collect unique ships
-        Set<Ship> shipsOnGrid = new HashSet<>();
-
-        // Iterate through all OceanGrid cells
-        for (int row = 0; row < 10; row++) {
-            for (int col = 0; col < 10; col++) {
-                Coordinate coordinate;
-                try {
-                    coordinate = new Coordinate(row, col);
-                } catch (Exception e) {
-                    continue;
-                }
-                Cell cell = aiOceanGrid.getCell(coordinate);
-                Ship ship = cell.getShip();
-
-                // Add ship to set if it exists
-                if (ship != null) {
-                    shipsOnGrid.add(ship);
-                }
-            }
+     if(aiShipFactory.numberOfSunkShips()==5) {
+        return true;}
+        else {
+            return false;
         }
-
-        // Check if all ships are sunk
-        for (Ship ship : shipsOnGrid) {
-            if (!ship.isSunk()) {
-                return false; // If any ship is not sunk return false
-            }
-        }
-
-        return true;
     }
 
     @Override
@@ -82,11 +57,17 @@ public class EasyPlayer implements IPlayer {
             aiOceanGrid.placeShip(ship);
         }
         //aiOceanGrid.addShips(aiShipFactory);
+        aiOceanGrid.addShips(aiShipFactory);
+        System.out.println("aiplayers grid");
+        aiOceanGrid.printGrid();
     }
 
     @Override
     public void printOceanGrid() {
         aiOceanGrid.printGrid();
+    }
+    public Grid getOceanGrid() {
+        return aiOceanGrid;
     }
 
     @Override
