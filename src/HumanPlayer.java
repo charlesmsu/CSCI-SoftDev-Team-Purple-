@@ -12,11 +12,11 @@ public class HumanPlayer implements IPlayer{
     private List<Coordinate> shotList = new ArrayList<Coordinate>();
     
     
-    protected ShipFactory aishShipFactory = new AutomaticShipFactory();
+    protected ShipFactory aiShipFactory = new AutomaticShipFactory();
 
-    public HumanPlayer(String name, ShipFactory aishShipFactory) {
+    public HumanPlayer(String name, ShipFactory aiShipFactory) {
         this.name = name;
-        this.aishShipFactory = aishShipFactory;
+        this.aiShipFactory = aiShipFactory;
     }
 
     @Override
@@ -43,7 +43,7 @@ public class HumanPlayer implements IPlayer{
    
     @Override
     public void placeShips(){
-        for (Ship ship : aishShipFactory.getShips()) {
+        for (Ship ship : aiShipFactory.getShips()) {
             oceanGrid.placeShip(ship);
         }
 
@@ -91,7 +91,7 @@ public class HumanPlayer implements IPlayer{
 
     @Override
     public boolean shipsAreSunk() {
-        if(aiShipFactory.numberOfSunkShips()==5) {
+        if( aiShipFactory.numberOfSunkShips() == 5 ){
             return true;}
             else {
                 return false;

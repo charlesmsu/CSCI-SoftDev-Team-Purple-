@@ -16,7 +16,7 @@ public class Game {
     ShotResult result;
     boolean exit;
     Player player1;
-    Player player2;
+    HumanPlayer player2;
     IPlayer cPlayer;
 
     public Game() {
