@@ -35,6 +35,21 @@ public class Game {
                     startOnePlayerGame();
                     ConsoleHelper.clearScreen();
                     System.out.println("Starting One Player Game...\n");
+
+                    // add human player
+                    Player humanPlayer = new Player();
+                    humanPlayer.promptForPlayerName();
+                    humanPlayer.getPlayerShips(humanPlayer);
+                    players.add(humanPlayer);
+
+                    // add AI player
+                    AIPlayer aiPlayer = new AIPlayer("Read Admiral (Lower Half)");
+                    players.add(aiPlayer);
+
+                    playCycle();
+
+                    // Do we still need this large wall of text???
+
                     // select Computer level Difficulty
                     // start by getting the players names request player ones name first
                     // build the players grids then start
