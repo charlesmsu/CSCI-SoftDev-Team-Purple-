@@ -78,7 +78,10 @@ public class EasyPlayer implements IPlayer {
 
     @Override
     public void placeShips() {
-        aiOceanGrid.addShips(aiShipFactory);
+        for (Ship ship : aiShipFactory.getShips()) {
+            aiOceanGrid.placeShip(ship);
+        }
+        //aiOceanGrid.addShips(aiShipFactory);
     }
 
     @Override
