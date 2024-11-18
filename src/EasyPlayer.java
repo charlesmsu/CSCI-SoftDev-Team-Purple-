@@ -12,7 +12,6 @@ public class EasyPlayer implements IPlayer {
         aiTargetGrid = new TargetGrid();
         aiShipFactory = new AutomaticShipFactory();
         attemptedShots = new HashSet<>();
-        placeShips(); // automatically place ships
     }
 
     @Override
@@ -54,8 +53,9 @@ public class EasyPlayer implements IPlayer {
     @Override
     public void placeShips() {
         aiOceanGrid.addShips(aiShipFactory);
-        System.out.println("aiplayers grid");
+        System.out.println("AI \n");
         aiOceanGrid.printGrid();
+
     }
 
     @Override
