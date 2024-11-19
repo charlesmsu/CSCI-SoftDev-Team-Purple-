@@ -12,11 +12,16 @@ public class HumanPlayer implements IPlayer{
     private List<Coordinate> shotList = new ArrayList<Coordinate>();
     
     
-    protected ShipFactory aiShipFactory = new AutomaticShipFactory();
+    protected ShipFactory aiShipFactory;
 
-    public HumanPlayer(String name, ShipFactory aiShipFactory) {
+    public HumanPlayer(String name) {
         this.name = name;
-        this.aiShipFactory = aiShipFactory;
+        
+    }
+
+    public void getShipFactory(int option) {
+        if(option == 1){ this.aiShipFactory = new AutomaticShipFactory(); }
+        if(option == 2){ this.aiShipFactory = new ManualShipFactory();}
     }
 
     @Override
@@ -26,7 +31,7 @@ public class HumanPlayer implements IPlayer{
 
     @Override
     public void printTargetGrid(){
-        targetGrid.printGrid();
+        this.targetGrid.printGrid();
     }
 
     public void setOceanGrid(OceanGrid grid){
@@ -53,10 +58,14 @@ public class HumanPlayer implements IPlayer{
     
     @Override
     public Coordinate takeShot() {
+        
         while (true){
-           String input = ConsoleHelper.getInput("Take a Shot> ");
+
+        String input = ConsoleHelper.getInput("Take a Shot> ");
             try {
                 shot  = new Coordinate(input);
+                printTargetGrid();
+                printOceanGrid();
                 shotList.add(shot);
             } catch (Exception e){
                 System.out.println("Invalid Shot");

@@ -52,7 +52,7 @@ public class OceanGrid extends Grid{
             ship.registerHit();
             cell.setState(CellState.HIT);
             if (ship.isSunk() == true) {
-                System.out.println(ship.getShipName() + "has sunk!)");
+                System.out.println(ship.getShipName() + " has sunk!");
                 return ShotResult.SUNK;
             } else {
                 return ShotResult.HIT;

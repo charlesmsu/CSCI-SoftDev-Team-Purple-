@@ -9,4 +9,5 @@ public interface IPlayer {
     public void printTargetGrid();
     public String getRecentSunkShip();
     public Grid getOceanGrid();
+    public void getShipFactory(int option);
 }
