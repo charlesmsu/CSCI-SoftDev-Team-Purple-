@@ -54,8 +54,8 @@ public class Game {
                             break;
 
                     }
-                    String name = ConsoleHelper.getInput("What is the Players name?");
-                    int option = ConsoleHelper.getInputWithInRange("How would like to set your ships? \nAutomatically(1)\nManually ship factory(2)", 1, 2);
+                    String name = ConsoleHelper.getInput("What is the Players name? ");
+                    int option = ConsoleHelper.getInputWithInRange("How would like to set your ships? \nAutomatically(1)\nManually ship factory(2)\n", 1, 2);
                     player1 = new HumanPlayer(name);
                     player1.getShipFactory(option);
                     player1.placeShips();
@@ -126,7 +126,7 @@ public class Game {
 
         while (true) {
 
-            ConsoleHelper.getInput("\nIt is " + cPlayer.getName() + " turn. \n");
+            ConsoleHelper.getInput("\nIt is " + cPlayer.getName() + " turn.\nPress enter to continue.\n");
             cord = cPlayer.takeShot();
             result = player1.receiveShot(cord);
             cPlayer.receiveShotResult(cord, result);
@@ -137,7 +137,7 @@ public class Game {
 
             // player1s turn
 
-            ConsoleHelper.getInput("It is your turn.");
+            ConsoleHelper.getInput("It is your turn.\nPress enter to continue.\n");
             while (true) {
 
                 try {
@@ -156,15 +156,15 @@ public class Game {
             switch(result){
                 case HIT:
                     System.out.println("You Hit a ship!");
-                    ConsoleHelper.getInput("Press Enter to continue");
+                    ConsoleHelper.getInput("Press Enter to continue\n");
                     break;
                 case MISS:
                     System.out.println("You have Missed!");
-                    ConsoleHelper.getInput("Press Enter to continue");
+                    ConsoleHelper.getInput("Press Enter to continue\n");
                     break;
                 case SUNK:
                     SplashPageOptions.displayShipSunk();
-                    ConsoleHelper.getInput("Press Enter to continue");
+                    ConsoleHelper.getInput("Press Enter to continue\n");
                     break;
             }
             player1.receiveShotResult(cord, result);
@@ -183,7 +183,7 @@ public class Game {
     public void playCycle() {
         while (true) {
             CellState state;
-            ConsoleHelper.getInput("It is " + players.get(0).getPlayerName() + "'s turn. \nPress Enter To Continue:");
+            ConsoleHelper.getInput("It is " + players.get(0).getPlayerName() + "'s turn.\nPress Enter To Continue:");
             players.get(0).getTargetGrid().printGrid();
             players.get(0).getOceanGrid().printGrid();
 
