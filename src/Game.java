@@ -115,7 +115,7 @@ public class Game {
             player.getTargetGrid().printGrid();
             player.getOceanGrid().printGrid();
             // display ship grid wait for player input to continue
-            ConsoleHelper.getInput("Press Enter To Continue");
+            ConsoleHelper.getInput("Press " + Colors.GREEN + "enter " + Colors.RESET + "to continue.");
             // Clear Screen method
             ConsoleHelper.clearScreen();
         }
@@ -126,7 +126,7 @@ public class Game {
 
         while (true) {
 
-            ConsoleHelper.getInput("\nIt is " + cPlayer.getName() + " turn.\nPress enter to continue.\n");
+            ConsoleHelper.getInput("\nIt is " + cPlayer.getName() + " turn.\nPress " + Colors.GREEN + "enter " + Colors.RESET + "to continue.\n");
             cord = cPlayer.takeShot();
             result = player1.receiveShot(cord);
             cPlayer.receiveShotResult(cord, result);
@@ -137,7 +137,7 @@ public class Game {
 
             // player1s turn
 
-            ConsoleHelper.getInput("It is your turn.\nPress enter to continue.\n");
+            ConsoleHelper.getInput("It is your turn.\nPress " + Colors.GREEN + "enter " + Colors.RESET + "to continue.\n");
             while (true) {
 
                 try {
@@ -155,16 +155,16 @@ public class Game {
             result = cPlayer.receiveShot(cord);
             switch(result){
                 case HIT:
-                    System.out.println("\nYou Hit a ship!");
-                    ConsoleHelper.getInput("Press Enter to continue.\n");
+                    System.out.println("\nYou " + Colors.RED + "Hit" + Colors.RESET + " a ship!");
+                    ConsoleHelper.getInput("Press " + Colors.GREEN + "enter " + Colors.RESET + "to continue.\n");
                     break;
                 case MISS:
                     System.out.println("\nYou have Missed!");
-                    ConsoleHelper.getInput("Press Enter to continue.\n");
+                    ConsoleHelper.getInput("Press " + Colors.GREEN + "enter " + Colors.RESET + "to continue.\n");
                     break;
                 case SUNK:
                     SplashPageOptions.displayShipSunk();
-                    ConsoleHelper.getInput("Press Enter to continue.\n");
+                    ConsoleHelper.getInput("Press " + Colors.GREEN + "enter " + Colors.RESET + "to continue.\n");
                     break;
             }
             player1.receiveShotResult(cord, result);
@@ -183,7 +183,7 @@ public class Game {
     public void playCycle() {
         while (true) {
             CellState state;
-            ConsoleHelper.getInput("It is " + players.get(0).getPlayerName() + "'s turn.\nPress Enter To Continue:");
+            ConsoleHelper.getInput("It is " + players.get(0).getPlayerName() + "'s turn.\nPress " + Colors.GREEN + "enter " + Colors.RESET + "to continue.\n");
             players.get(0).getTargetGrid().printGrid();
             players.get(0).getOceanGrid().printGrid();
 
@@ -211,13 +211,13 @@ public class Game {
                 break;
             }
 
-            ConsoleHelper.getInput("Your Grids have been updated. \nPress Enter To Finish your turn:");
+            ConsoleHelper.getInput("Your Grids have been updated. \nPress" + Colors.GREEN + " Enter" + Colors.RESET + " to Finish your turn: ");
 
             ConsoleHelper.clearScreen();
 
             ConsoleHelper.clearScreen();
 
-            ConsoleHelper.getInput("It is " + players.get(1).getPlayerName() + "'s turn. \nPress Enter To Continue:");
+            ConsoleHelper.getInput("It is " + players.get(1).getPlayerName() + "'s turn. \nPress " + Colors.GREEN + "enter " + Colors.RESET + "to continue.\n");
             players.get(1).getTargetGrid().printGrid();
             players.get(1).getOceanGrid().printGrid();
 
@@ -238,7 +238,7 @@ public class Game {
 
             players.get(1).getTargetGrid().printGrid();
             players.get(1).getOceanGrid().printGrid();
-            ConsoleHelper.getInput("Your Grids have been updated \nPress Enter to Finish your turn:");
+            ConsoleHelper.getInput("Your Grids have been updated. \nPress" + Colors.GREEN + " Enter" + Colors.RESET + " to Finish your turn: ");
             ConsoleHelper.clearScreen();
 
             if (players.get(0).checkShipCount() == true) {

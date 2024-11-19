@@ -11,9 +11,9 @@ public class WinnerDisplay {
 
     // announce the winner and print their winning ocean grid
     public static void printWinnerDisplay(String name, Grid oceanGrid) {
-        System.out.println(Colors.BLUE + "**************************************************");
-        System.out.println("***** " + name.toUpperCase() + " WINS!!! *****");
-        System.out.println(Colors.BLUE + "**************************************************");
+        System.out.println(Colors.YELLOW + "**************************************************" + Colors.RESET);
+        System.out.println(Colors.YELLOW + "***** " + Colors.BLUE + name.toUpperCase() + " WINS!!! " + Colors.YELLOW + "*****");
+        System.out.println(Colors.YELLOW + "**************************************************" + Colors.RESET);
         System.out.println();
         
         String formattedName = capitalizeFirstLetter(name);
