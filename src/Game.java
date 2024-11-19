@@ -54,8 +54,8 @@ public class Game {
                             break;
 
                     }
-                    String name = ConsoleHelper.getInput("What is the Players name? ");
-                    int option = ConsoleHelper.getInputWithInRange("How would like to set your ships? \nAutomatically(1)\nManually ship factory(2)\n", 1, 2);
+                    String name = ConsoleHelper.getInput("\nWhat is the Players name? ");
+                    int option = ConsoleHelper.getInputWithInRange("\nHow would like to set your ships? \nAutomatically(1)\nManually ship factory(2)\n", 1, 2);
                     player1 = new HumanPlayer(name);
                     player1.getShipFactory(option);
                     player1.placeShips();
@@ -155,16 +155,16 @@ public class Game {
             result = cPlayer.receiveShot(cord);
             switch(result){
                 case HIT:
-                    System.out.println("You Hit a ship!");
-                    ConsoleHelper.getInput("Press Enter to continue\n");
+                    System.out.println("\nYou Hit a ship!");
+                    ConsoleHelper.getInput("Press Enter to continue.\n");
                     break;
                 case MISS:
-                    System.out.println("You have Missed!");
-                    ConsoleHelper.getInput("Press Enter to continue\n");
+                    System.out.println("\nYou have Missed!");
+                    ConsoleHelper.getInput("Press Enter to continue.\n");
                     break;
                 case SUNK:
                     SplashPageOptions.displayShipSunk();
-                    ConsoleHelper.getInput("Press Enter to continue\n");
+                    ConsoleHelper.getInput("Press Enter to continue.\n");
                     break;
             }
             player1.receiveShotResult(cord, result);
